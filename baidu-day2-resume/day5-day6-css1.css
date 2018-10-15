@@ -1,0 +1,35 @@
+.title{
+    font-size: 2em;
+    line-height: 2;
+    font-weight: bold;
+}
+.item{
+    font-size: 1.5em;
+    line-height: 2em;
+    font-weight: bold;
+}
+.inf{
+    line-height:2;
+}
+.inf span{
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 1em;
+}
+.inf span+span{
+    text-indent: 2.5em;
+}
+.inf2{
+    line-height:2;
+
+}
+.info{
+    line-height:2;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0;
+}
+.inf2 span{
+    display: block;
+    line-height: 2;
+}
