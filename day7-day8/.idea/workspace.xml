@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="40e1c8c7-a49f-4ee5-bae1-404aacda7ec7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/ATM1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/ATM1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/ATM2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/ATM2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/ATM2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATM1/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baidu-day2-resume/day5-day6-third.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baidu-day2-resume/day5-day6-third.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day16/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day16/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day16/day16.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day16/js_16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/10-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/9and9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/about-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day17-day18/day17-day18.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/.idea/day19_other people's.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/day19.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day19/day19.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/Eric.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/MDNlearning1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/control&amp;hidden.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/day20-day21.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/erik_ce204002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/fade_away.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/li-exercise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day20-day21/self_exercise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/Number.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/day22-day23.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day22-day23/reference.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Holy-Grail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/HolyGrail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/absolute+margin-left.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/css1-retry.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/css2-retry.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/css3-retry.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/day5-day6-retry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/float+BFC.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/float+margin-left.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/float.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/homework-retry.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/homework-retry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/homework_retry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/ProE@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/Singleton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg1_画板 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg2_画板 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg3_画板 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/belly1_bg4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/calliper gauge.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/fillet gauge.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/internal calliper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/logo_画板 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/micrometer.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/pliers.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/screwdriver.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/spanner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/steel rule.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/sview_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/thread gauge.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/vernier cliper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/教程.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/images/链接.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inline-block.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/introOfTools.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/justA.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/left-fixed.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Myself-exercise.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day7-day8-定位.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day7-day8.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holy-grail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/holy-grail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/三栏布局-左中宽度固定.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/三栏布局.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/两栏布局.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/定位实战2：隐藏的滑动面板.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/定位实战：消息列表盒子.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/弹性盒子.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/弹性盒子2-align 0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/弹性盒子3-嵌套.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/弹性盒子wrap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/消息列表盒子自制.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/简单页面作业.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/简单页面作业.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/beauty.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/beauty.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/day9-day11.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Background2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Check Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Facebook Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Google Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Hero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Instagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Iphone Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/LinkedIn Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Mail Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Map Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Pencil Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Phone Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Pic1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Pic2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Pinterest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Portland.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Settings Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Singleton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Tumbler Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Twitter Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/Twitter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/peoson3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/person1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/person2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day9-day11/pics/person4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics/icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics/icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics/icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics/icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/pics_replacement.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pics_replacement/showpics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../screen_exercise/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../screen_exercise/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../毕业设计论文中代码展示/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../毕业设计论文中代码展示/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../毕业设计论文中代码展示/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../毕业设计论文中代码展示/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../毕业设计论文中代码展示/毕业设计论文中代码展示.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-day2-resume/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baidu-day2-resume/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-day2-resume/CSS1.css" beforeDir="false" afterPath="$PROJECT_DIR$/../baidu-day2-resume/CSS1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-day2-resume/day.html" beforeDir="false" afterPath="$PROJECT_DIR$/../baidu-day2-resume/day.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-day2-resume/day5-day6.html" beforeDir="false" afterPath="$PROJECT_DIR$/../baidu-day2-resume/day5-day6.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1134">
+              <caret line="63" column="31" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/简单页面作业.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/简单页面作业.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2952">
+              <caret line="164" column="16" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <dirStrings>
+      <dir>C:\Users\74049\OneDrive\html_exercise\day7-day8\.idea\images</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/day7-day8.html" />
+        <option value="$PROJECT_DIR$/day7-day8-定位实战.html" />
+        <option value="$PROJECT_DIR$/day7-day8-定位实战2.html" />
+        <option value="$PROJECT_DIR$/消息列表盒子自制.html" />
+        <option value="$PROJECT_DIR$/Myself-exercise.css" />
+        <option value="$PROJECT_DIR$/holy grail.html" />
+        <option value="$PROJECT_DIR$/holy grail.css" />
+        <option value="$PROJECT_DIR$/.idea/inline-block.css" />
+        <option value="$PROJECT_DIR$/.idea/float.css" />
+        <option value="$PROJECT_DIR$/.idea/float+margin-left.css" />
+        <option value="$PROJECT_DIR$/.idea/absolute+margin-left.css" />
+        <option value="$PROJECT_DIR$/.idea/left-fixed.html" />
+        <option value="$PROJECT_DIR$/.idea/float+BFC.css" />
+        <option value="$PROJECT_DIR$/.idea/Holy-Grail.html" />
+        <option value="$PROJECT_DIR$/.idea/day5-day6-retry.html" />
+        <option value="$PROJECT_DIR$/.idea/HolyGrail.css" />
+        <option value="$PROJECT_DIR$/.idea/homework_retry.js" />
+        <option value="$PROJECT_DIR$/.idea/justA.html" />
+        <option value="$PROJECT_DIR$/.idea/introOfTools.html" />
+        <option value="$PROJECT_DIR$/.idea/homework-retry.html" />
+        <option value="$PROJECT_DIR$/.idea/homework-retry.css" />
+        <option value="$PROJECT_DIR$/table.html" />
+        <option value="$PROJECT_DIR$/定位实战：消息列表盒子.html" />
+        <option value="$PROJECT_DIR$/定位实战2：隐藏的滑动面板.html" />
+        <option value="$PROJECT_DIR$/弹性盒子wrap.html" />
+        <option value="$PROJECT_DIR$/弹性盒子.html" />
+        <option value="$PROJECT_DIR$/弹性盒子2-align 0.html" />
+        <option value="$PROJECT_DIR$/弹性盒子3-嵌套.html" />
+        <option value="$PROJECT_DIR$/两栏布局.html" />
+        <option value="$PROJECT_DIR$/holy-grail.html" />
+        <option value="$PROJECT_DIR$/holy-grail.css" />
+        <option value="$PROJECT_DIR$/三栏布局-左中宽度固定.html" />
+        <option value="$PROJECT_DIR$/三栏布局.css" />
+        <option value="$PROJECT_DIR$/homework.css" />
+        <option value="$PROJECT_DIR$/homework.html" />
+        <option value="$PROJECT_DIR$/简单页面作业.html" />
+        <option value="$PROJECT_DIR$/简单页面作业.css" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="320" />
+    <option name="y" value="-30" />
+    <option name="width" value="1385" />
+    <option name="height" value="755" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="day7-day8" type="b2602c69:ProjectViewProjectNode" />
+              <item name="day7-day8" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567847527825" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\74049\OneDrive\html_exercise\day7-day8\.idea\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\74049\OneDrive\html_exercise\day7-day8\.idea\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40e1c8c7-a49f-4ee5-bae1-404aacda7ec7" name="Default Changelist" comment="" />
+      <created>1539653099809</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539653099809</updated>
+      <workItem from="1539653103893" duration="11601000" />
+      <workItem from="1539738978897" duration="2854000" />
+      <workItem from="1539760912004" duration="12310000" />
+      <workItem from="1539830820710" duration="6611000" />
+      <workItem from="1539854465596" duration="1046000" />
+      <workItem from="1539855684659" duration="954000" />
+      <workItem from="1540278631449" duration="608000" />
+      <workItem from="1551141066372" duration="235000" />
+      <workItem from="1551517658283" duration="4858000" />
+      <workItem from="1551665543804" duration="8961000" />
+      <workItem from="1551686040189" duration="3339000" />
+      <workItem from="1552095474071" duration="61000" />
+      <workItem from="1552095566764" duration="9218000" />
+      <workItem from="1552115744397" duration="824000" />
+      <workItem from="1552127198474" duration="301000" />
+      <workItem from="1552267402907" duration="1200000" />
+      <workItem from="1552289432725" duration="685000" />
+      <workItem from="1552317709728" duration="299000" />
+      <workItem from="1552349820850" duration="1342000" />
+      <workItem from="1552358116193" duration="296000" />
+      <workItem from="1552528825333" duration="789000" />
+      <workItem from="1552614749945" duration="754000" />
+      <workItem from="1552620194372" duration="39000" />
+      <workItem from="1552636306269" duration="1019000" />
+      <workItem from="1552877453793" duration="8045000" />
+      <workItem from="1552920018399" duration="2137000" />
+      <workItem from="1552957056323" duration="1812000" />
+      <workItem from="1552962718493" duration="3463000" />
+      <workItem from="1552975187618" duration="6513000" />
+      <workItem from="1552986962180" duration="3521000" />
+      <workItem from="1553127092703" duration="2859000" />
+      <workItem from="1553240712639" duration="1836000" />
+      <workItem from="1553245687713" duration="473000" />
+      <workItem from="1553473620930" duration="9282000" />
+      <workItem from="1553501478967" duration="915000" />
+      <workItem from="1553502666802" duration="726000" />
+      <workItem from="1553524117609" duration="2471000" />
+      <workItem from="1553560870518" duration="8397000" />
+      <workItem from="1553588207136" duration="1284000" />
+      <workItem from="1553648142763" duration="213000" />
+      <workItem from="1554959695262" duration="49000" />
+      <workItem from="1555040266550" duration="75000" />
+      <workItem from="1567221357399" duration="3827000" />
+      <workItem from="1567234971366" duration="6538000" />
+      <workItem from="1567693655561" duration="1568000" />
+      <workItem from="1567821035726" duration="5156000" />
+      <workItem from="1567842092810" duration="5411000" />
+      <workItem from="1568171267681" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="146786000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <layout>
+      <window_info id="Designer" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.22050938" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="9" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.21514745" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="9" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/day7-day8.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Myself-exercise.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="57" column="15" lean-forward="true" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/消息列表盒子自制.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/logo_画板 1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/belly1_bg2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/belly1_bg3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/9.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/images/calliper gauge.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/absolute+margin-left.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/css1-retry.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/css2-retry.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/css3-retry.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/float+BFC.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/float+margin-left.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/float.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/Holy-Grail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/HolyGrail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/left-fixed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/homework_retry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inline-block.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/justA.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/homework-retry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="180" column="56" selection-start-line="180" selection-start-column="56" selection-end-line="180" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/day5-day6-retry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/introOfTools.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/homework-retry.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/弹性盒子wrap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/弹性盒子3-嵌套.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="16" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/弹性盒子2-align 0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/弹性盒子.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/定位实战2：隐藏的滑动面板.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/定位实战：消息列表盒子.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="22" selection-end-line="26" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day7-day8-定位.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/两栏布局.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="45" column="14" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/holy-grail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/holy-grail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="7" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/三栏布局.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/三栏布局-左中宽度固定.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/简单页面作业.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2952">
+          <caret line="164" column="16" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/简单页面作业.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

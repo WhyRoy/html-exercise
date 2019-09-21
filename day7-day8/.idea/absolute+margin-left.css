@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    padding: 15px 20px;
+    border: 1px dashed #ff6c60;
+    position: relative;
+    overflow: auto;
+}
+.left{
+    width: 120px;
+    border: 5px solid #ddd;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+.right{
+    margin-left: 140px;
+    border: 5px solid #ddd;
+}

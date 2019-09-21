@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;/*主要是解决ul的缩进问题*/
+    box-sizing: border-box;
+}
+header{
+    width: 100%;
+    height: 4em;
+    background-color: black;
+    color: white;
+    min-width: 960px;
+}
+.header-content{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.header-nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.header-nav ul{
+    list-style-type: none;
+}
+li{
+    display: inline-block;
+}
+.header-nav li{
+    margin-left: 1em;
+}
+li a{
+    text-decoration: none;
+}
+.header-nav li a:link,.header-nav li a:visited{
+    color: white;
+}
+.header-nav li a:focus,.header-nav li a:hover,.header-nav li a:active{
+    color: #b7c0cd;
+}
+.banner{
+    width: 100%;
+    min-width: 960px;
+    height: 15em;
+    background-color: forestgreen;
+}
+.banner-content{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.banner-content ul{
+    position: absolute;
+    bottom: 1em;
+    right: 0;
+}
+.banner-content li{
+    width: 2em;
+    height: 2em;
+    background-color: white;
+    margin-left: 0.5em;
+    text-align: center;
+}
+.banner-content a:link,.banner-content a:visited{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    line-height: 2em;
+}
+.banner-content a:focus,.banner-content a:hover,.banner-content a:active{
+    color: white;
+    font-weight: bold;
+    background-color:gray;
+}
+.nav{
+    width: 100%;
+    min-width: 960px;
+    height: 4em;
+    border-bottom: 1px solid lightgray;
+}
+.nav-content{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.nav-content ul{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+}
+.nav-content li{
+    display: inline-block;
+    width: 5em;
+    height: 3em;
+    line-height: 3em;
+    float: left;
+
+}
+.nav-content a:link,.nav-content a:visited{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: black;
+}
+.nav-content a:focus,.nav-content a:hover,.nav-content a:active{
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+.content{
+    width: 960px;
+    height: auto;
+    margin: 1em auto;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+}
+.content-raw{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.content-box{
+    flex: 1;
+    border: 1px solid gray;
+    text-align: center;
+    padding: 80px;
+    margin: 5px;
+}
+footer{
+    width: 100%;
+    height: 4em;
+    padding-top: 1em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
