@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="start">开始</button>
+<script>
+    document.getElementById("start").onclick = function () {
+        var i;
+        for (i=1;i<=100;i++){
+            if(i % 3 === 0||i %10 ===3||Math.floor(i/10)===3){
+                console.log("PA");
+            }
+            else {
+                console.log(i);
+            }
+
+            /*switch (1) {
+                case i % 3 === 0:
+                    console.log("PA");
+                    break;
+                case i %10 ===3:
+                    console.log("PA");
+                    break;
+                case Math.floor(i/10)===3:
+                    console.log("PA");
+                    break;
+                default:
+                    console.log(i);
+                    break;
+            }*/
+        }
+    }
+</script>
+</body>
+</html>

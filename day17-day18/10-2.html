@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+<input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+<input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+<button id="trans-btn">转化为二进制</button>
+<p id="result">运算结果</p>
+<script>
+
+    function dec2bin(decNumber) {
+        decNumber = Number(decNumber);
+        var remain = Number(decNumber),result = "";//result设置为字符串
+        var x = Number(document.getElementById("bin-bit").value);
+
+       if (remain <0||remain %1 !==0){
+           alert("这不是一个非负整数");
+           console.log("这不是一个非负整数");
+           /*return;*/
+       }
+       else {
+           while(remain !==0){
+               result = remain % 2 +result;
+               remain =Math.floor(remain/2);
+           }
+
+            /*return result;*/
+             var y = result.length;
+            var i = x-y;
+            if(i >0){
+                for(i;i>0;i--){
+                    result="0"+result;
+
+                }
+                return result;
+            }
+            else if(i===0){
+                return result;
+            }
+            else {
+                alert("最初设置的位数不够长");
+                console.log("最初设置的位数不够长");
+                return result;
+            }
+        }   // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+
+    }
+    document.getElementById("trans-btn").onclick=function () {
+        var result2 = dec2bin(document.getElementById("dec-number").value);
+        console.log(result2.length);
+        document.getElementById("result").innerHTML = result2;
+    }
+ /*   document.getElementById("trans-btn").onclick=function dec2bin() {
+
+        var decNumber = Number(document.getElementById("dec-number").value);
+        var remain = Number(decNumber),result = "";
+        if (remain <0||remain %1 !==0){
+            alert("这不是一个非负整数");
+            console.log("这不是一个非负整数");
+            return;
+        }
+        else {
+            while(remain !==0){
+                result = remain % 2 +result;
+                remain =Math.floor(remain/2);
+            }
+        }
+        document.getElementById("result").innerHTML = result;
+        // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+    }*/
+    // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+    // Some coding
+
+</script>
+</body>
+</html>

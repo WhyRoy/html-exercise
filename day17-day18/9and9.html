@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       table{
+           width: 600px;
+           border-collapse: collapse;
+       }
+        th{
+            text-align: center;
+            border: 1px solid deeppink;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">开始</button>
+<script type="text/javascript">
+   /* var n,m;
+    for(n=1;n<10;n++){
+        for(m=1;m<10;m++){
+            var t =n*m;
+            console.log(n+ "*" + m+ "="+ t)
+        }
+    }*/
+    document.getElementById("start").onclick = function () {
+        document.write("<table>");
+        for(var n=1;n<10;n++){
+            document.write("<tr>");
+            for(var m=1;m<=n;m++){
+                var t =n*m;
+                console.log(n+ "*" + m+ "="+ t);
+                document.write("<th>"+n+"*"+m+"="+t+"</th>");
+            }
+            document.write("</tr>");
+        }
+    }
+</script>
+</body>
+</html>
