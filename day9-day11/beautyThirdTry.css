@@ -1,0 +1,425 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.first{
+    width: 100%;
+    height: 950px;
+    min-width: 1200px;
+    background-image: url("pics/Background.png");
+    background-size: cover;
+}
+.first-content{
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+.first-content h1{
+    color: white;
+    font-weight: lighter;
+    text-transform: capitalize;
+    font-size: 3em;
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+.first-content>p{
+    font-family: Helvetica-Condensed-Light-Light;
+    color: white;
+    font-weight: lighter;
+    padding: 0 12em;
+    word-spacing: 5px;
+    line-height: 2em;
+}
+.first-info{
+    width: 100%;
+    height: 15em;
+    border: 1px solid gray;
+    margin-top: 5em;
+}
+.first-info h4{
+    color: white;
+    font-family: "Arial";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 3em;
+}
+.first-info p{
+    color: gray;
+    font-family: "Arial";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.5em;
+    margin-top: 1em;
+}
+.first-info form{
+    margin-top: 3em;
+}
+.first-info input{
+    color: white;
+    background-color: transparent;
+    border: 1px solid darkgray;
+    padding: 0.5em 2em;
+}
+.first-info input+input{
+    margin-left: 2em;
+}
+.first-info input:last-child{
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+}
+.second{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.second-content{
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+}
+.second-content>h4{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 4em;
+    /*margin-bottom: 2em;*/
+}
+.second-content h1{
+    font-weight: lighter;
+    padding: 2em 5em;
+}
+.second-info{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+   /* border: 1px solid gray;*/
+}
+.second-info-raw{
+    flex: 1 200px;
+    display: flex;
+}
+.second-info-box{
+    flex: 1;
+    flex-direction: row;
+    text-align: left;
+    background: url("pics/Check Icon.png") no-repeat left top;
+    padding-left: 4em;
+    margin: 2em;
+}
+.second-info-box h4{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+.second-info-box p{
+    color: gray;
+
+}
+.third{
+    width: 100%;
+    height: 900px;
+    background: url("pics/Background2.png") no-repeat;
+    background-size: cover;
+}
+.third-content{
+    width: 65%;
+    height: 100%;
+    margin: 0 auto;
+    color: white;
+}
+.third-content h1{
+    font-weight: lighter;
+    padding-right: 15.5em;
+    padding-top: 6em;
+}
+.third-content p{
+    color: gray;
+    margin-top: 4em;
+    line-height: 2em;
+}
+.third-content form{
+    margin-top: 6em;
+}
+.third-content input{
+    padding: 1em 2em;
+    border: 1px solid gray;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: white;
+    letter-spacing: 2px;
+}
+.third-content input:nth-of-type(2){
+    margin-left: 2em;
+    background-color: transparent;
+    color: white;
+}
+.fourth{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid gray;
+}
+.fourth-content{
+    width: 75%;
+    height: 100%;
+    margin: 2em auto;
+    text-align: center;
+}
+.fourth-content h1{
+    font-weight: lighter;
+    margin-top: 2em;
+    text-transform: capitalize;
+}
+.fourth-content-raw{
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+}
+.fourth-box{
+    /*margin: 1em;*/
+    padding: 4em 2em;
+    background: url("pics/Hero.png") no-repeat center top;
+}
+.fifth{
+    width: 100%;
+    height:auto;
+    border: 1px solid gray;
+}
+.fifth-content{
+    width: 75%;
+    height: 800px;
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+}
+.fifth-content-raw{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+}
+
+.fifth-content-raw:first-child{
+    margin-bottom: 4em;
+}
+.word-box{
+    flex: 1;
+    height: 350px;
+
+    color: gray;
+}
+.word-box h4{
+    margin-top: 8%;
+    margin-bottom: 5%;
+    color: black;
+}
+
+.word-box1{
+    margin-left: 10%;
+}
+.word-box2{
+    margin-right: 10%;
+}
+.sixth{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid lightgray;
+}
+.sixth-content{
+    width: 75%;
+    height: 100%;
+    margin: 4em auto;
+    text-align: center;
+}
+.sixth-content h1{
+    font-weight: lighter;
+    margin-bottom: 1em;
+}
+.sixth-content p{
+    padding: 0 20%;
+    line-height: 1.5em;
+    color: gray;
+}
+.box-area{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+.box-row{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.box{
+    flex: 1;
+    position: relative;
+    height: 450px;
+}
+.sixth img{
+    width: 80%;
+    height: 80%;
+    position: relative;
+    z-index: 1;
+}
+.behind{
+    width: 80%;
+    height: 80%;
+    color: white;
+    background-color: rgba(50,50,50,0.8);
+    padding-top: 4em;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 10%;
+}
+.behind h4{
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-transform: capitalize;
+}
+.behind p{
+    text-transform: uppercase;
+    word-spacing: 5px;
+}
+.behind ul{
+    list-style-type: none;
+    margin-top: 10%;
+}
+.behind li{
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+}
+.behind li+li{
+    margin-left: 2em;
+}
+.behind li:hover{
+    cursor: pointer;
+}
+.sixth img:hover,.sixth img:focus{
+    z-index: 0;
+}
+.behind:hover,.behind:focus{
+    z-index: 1;
+}
+.seventh{
+    width: 100%;
+    height: auto;
+}
+.seventh-content{
+    width: 75%;
+    height: 100%;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: row;
+}
+.left-area,.right-area{
+    flex: 1;
+    margin: 3em;
+}
+.left-area{
+    border: 1px solid gray;
+    height: 800px;
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: center;
+}
+.left-area h4{
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+}
+.left-area form{
+    margin-top: 10%;
+}
+.left-area input{
+    display: block;
+    width: 100%;
+    height: 4em;
+    margin-bottom: 4em;
+}
+.left-area input:nth-of-type(3){
+    height: 14em;
+}
+.left-area button{
+    width: 100%;
+    height: 4em;
+    background-color: black;
+    color: white;
+    border: none;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+.right-area h1{
+    font-weight: lighter;
+    font-size: 4em;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    text-transform: uppercase;
+}
+.right-area p{
+    margin-bottom: 10%;
+}
+.right-area p:nth-of-type(1){
+    color: gray;
+    word-spacing: 2px;
+    margin-bottom: 20%;
+}
+.right-area p:nth-of-type(2){
+    font-weight: bold;
+    background: url("pics/Map Icon.png") no-repeat center left;
+    padding-left: 2em;
+}
+.right-area p:nth-of-type(3){
+    height: 1.5em;
+    font-weight: bold;
+    background: url("pics/Phone Icon.png") no-repeat center left;
+    padding-left: 2em;
+}
+.right-area p:nth-of-type(4){
+    font-weight: bold;
+    background: url("pics/Mail Icon.png") no-repeat center left;
+    padding-left: 2em;
+}
+.eighth{
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: white;
+}
+.eighth-content{
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 4em;
+    display: flex;
+}
+.eight-boxes{
+    flex: 1;
+}
+.eight-boxes:last-child{
+    flex: 1.2;
+}
+.eight-boxes h5{
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.eight-boxes p{
+    color: gray;
+    margin-top: 1.5em;
+}
+.eight-boxes ul{
+    list-style-type: none;
+    margin-top: 2em;
+}
+.eight-boxes li{
+    display: inline-block;
+    opacity: 0.4;
+}
+.eight-boxes li+li{
+    margin-left: 2em;
+}

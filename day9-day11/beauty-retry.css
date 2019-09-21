@@ -1,0 +1,432 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p,img{
+    cursor: pointer;
+}
+.first{
+    width: 100%;
+    height: auto;
+    min-width: 1200px;
+    min-height: 1000px;
+    background-image: url("./pics/Background.png");
+    background-size: cover;
+    color: white;
+}
+.first-content{
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+.first-content h1{
+    padding-top: 5em;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    font-weight: lighter;
+    padding-bottom: 2.5em;
+}
+.first-content p{
+    padding: 0 20em;
+    line-height: 2em;
+    color: lightgray;
+    word-spacing: 3px;
+}
+.first-info{
+    margin-top: 5em;
+    border: 1px solid gray;
+    padding: 4em;
+}
+.first-info h4{
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+.first-info p{
+    margin-top: 1em;
+    font-size: 0.5em;
+    text-transform: uppercase;
+    color: gray;
+}
+.first-info form{
+    margin-top: 3em;
+}
+.first-info input{
+    background-color: transparent;
+    padding: 0.5em;
+    border: 1px solid darkgray;
+    color: white;
+}
+.first-info input+input{
+    margin-left: 2em;
+}
+.first-info input:nth-of-type(3){
+    background-color: white;
+    color: black;
+    text-transform: uppercase;
+    font-size: small;
+}
+.second{
+    width: 100%;
+    min-width: 1200px;
+    /*height: 800px;*/
+    text-align: center;
+}
+.second-content{
+    width: 75%;
+    height: 100%;
+    margin: 5em auto;
+}
+.second-content h4{
+    text-transform: uppercase;
+}
+.second-content h1{
+    padding: 1em 20%;
+    font-weight: lighter;
+}
+.second-info{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.second-info-raw{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    margin: 3em;
+}
+.second-info-box{
+    flex: 1;
+    /*border: 1px solid gray;*/
+    text-align: left;
+    background: url("pics/Settings Icon.png") no-repeat left top;
+    padding-left: 4em;
+}
+.second-info-box h4{
+    margin-bottom: 1.5em;
+}
+.second-info-box p{
+    color: gray;
+    line-height: 1.5em;
+    padding-right: 10em;
+}
+.third{
+    width: 100%;
+    height: 1000px;
+    background: url("pics/Background2.png");
+    background-size: cover;
+    color: white;
+}
+.third-content{
+    width: 40%;
+    height: 100%;
+    position: relative;
+    left: 15%;
+    top: 30%;
+
+}
+.third-content h1{
+    padding-right: 30%;
+    font-family: sans-serif;
+    font-size: 2.1em;
+    font-weight: lighter;
+    line-height: 1.5em;
+    margin-bottom: 2em;
+}
+.third-content p{
+    color: gray;
+    padding-right: 30%;
+    line-height: 1.5em;
+    margin-bottom: 4em;
+    /*text-align-last:justify;
+    text-align:justify;
+    text-justify:distribute-all-lines; // 这行必加，兼容ie浏览器*/
+}
+.third-content input{
+    padding: 1em 2em;
+    margin-right: 2em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+.third-content input:first-child{
+    background-color: white;
+    border: 1px solid white;
+}
+.third-content input:nth-of-type(2){
+    background-color: transparent;
+    border: 1px solid gray;
+    color: white;
+}
+.fourth{
+    width: 100%;
+    height: 600px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+}
+.fourth-content{
+    width: 75%;
+    margin: 5% auto;
+ }
+.fourth h1{
+    padding-top: 5%;
+    padding-bottom: 10%;
+    text-transform: capitalize;
+    font-weight: lighter;
+    word-spacing: 10px;
+}
+.fourth-content-raw{
+    display: flex;
+    flex-direction: row;
+}
+.fourth-box{
+    background: url("pics/Singleton.png") no-repeat top center;
+    /*padding: 8% 2em;*/
+    padding-top: 8%;
+    padding-bottom: 8%;
+    line-height: 1.5em;
+    margin-right: 4em;
+}
+.fourth-box:last-child{
+    margin-right: 0;
+}
+.fifth{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid gray;
+}
+.fifth-content{
+    width: 75%;
+    height: auto;
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+}
+.fifth-row1,.fifth-row2{
+    width: 100%;
+    height: 100%;
+    /*box-sizing: border-box;*/
+    display: flex;
+    flex-direction: row;
+
+}
+.fifth-row1{
+    margin-bottom: 4em;
+}
+.fifth-row1 img{
+    margin-right: 10%;
+}
+.fifth-row2 img{
+    margin-left: 10%;
+}
+
+.word-box h4{
+    margin-top: 15%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+    line-height: 2em;
+    text-transform: capitalize;
+}
+.word-box p{
+    color: gray;
+    line-height: 1.5em;
+}
+.sixth{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid lightgray;
+}
+.sixth-content{
+    width: 75%;
+    height: 100%;
+    margin: 5% auto;
+    text-align: center;
+}
+.sixth-content>h1{
+    text-transform: capitalize;
+    font-weight: lighter;
+    margin-bottom: 1em;
+}
+.sixth-content>p{
+    box-sizing: border-box;
+    padding: 2em 25% 2em 25%;
+    color: gray;
+    line-height: 1.5em;
+}
+.boxesarea{
+    display: flex;
+    flex-direction: column;
+}
+.row{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.sixth-boxes{
+    flex: 1;
+    position: relative;
+    /*border: 1px solid gray;*/
+}
+.sixth-boxes img{
+    width: 90%;
+    height: 90%;
+    position: relative;
+    z-index: 1;
+}
+.sixth-boxes img:hover{
+    z-index: -1;
+}
+.behind{
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    left: 5%;
+    z-index: 0;
+    background-color: rgba(50,50,50,0.8);
+    color: white;
+}
+.behind h3{
+    margin: 25% 0 5% 0;
+    font-weight: lighter;
+}
+.behind p{
+    font-size: 0.7em;
+    font-weight: lighter;
+    letter-spacing: 0.1em;
+    color: gray;
+    margin-bottom: 5%;
+}
+.behind:hover{
+    z-index: 2;
+}
+.behind ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.behind li{
+    display: inline-block;
+    margin-right: 1.5em;
+}
+.behind li:last-child{
+    margin-right: 0;
+}
+.seventh{
+    width: 100%;
+    height: 600px;
+    /*border-bottom: 1px solid lightgray;*/
+}
+.seventh-content{
+    width: 75%;
+    height: 100%;
+    margin: 2em auto;
+    display: flex;
+
+}
+.form{
+    display: inline-block;
+    width: 40%;
+    height: 90%;
+    border: 1px solid lightgray;
+    margin-left: 6.67%;
+    margin-right: 6.67%;
+    margin-top: 1%;
+    text-align: center;
+}
+.seventh-info{
+    display: inline-block;
+    width: 40%;
+    height: 90%;
+    margin-left: 6.67%;
+    margin-right: 6.67%;
+    /*border: 1px solid lightgray;*/
+}
+.form h3{
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10% auto;
+}
+.form input{
+    width: 75%;
+    height: 3em;
+    border: 1px solid lightgray;
+    color: lightgray;
+    margin: 4%;
+    padding-left: 1em;
+}
+.form input:nth-of-type(3){
+    height: 5em;
+}
+.form input:nth-of-type(4){
+    background-color: black;
+    border: 1px solid black;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.seventh-info h1{
+    font-weight: lighter;
+    margin: 10% 0 5% 0;
+    text-transform: capitalize;
+}
+.seventh-info>p{
+    color: lightgray;
+    font-weight: lighter;
+    padding-right: 30%;
+    margin-bottom: 10%;
+}
+.seventh-contact1{
+    background: url("pics/Map Icon.png") no-repeat left center;
+    padding-left: 8%;
+    margin-bottom: 5%;
+}
+.seventh-contact2{
+    background: url("pics/Phone Icon.png") no-repeat left center;
+    padding: 1em 0 1em 8%;
+    margin-bottom: 5%;
+}
+.seventh-contact3{
+    background: url("pics/Mail Icon.png") no-repeat left center;
+    padding: 1em 0 1em 8%;
+    margin-bottom: 5%;
+}
+.eighth{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+}
+.eight-content{
+    width: 75%;
+    height: 100%;
+    padding: 2% 0;
+    margin: 0 auto;
+    display: flex;
+}
+.eight-boxes h5{
+    color: white;
+    margin-bottom: 5%;
+}
+.eight-content p{
+    color: gray;
+    margin-top: 5%;
+}
+.eight-boxes p:last-child{
+    padding-right: 30%;
+}
+.eight-boxes{
+    flex: 1;
+}
+.eight-boxes ul{
+    margin-top: 10%;
+    padding: 0;
+    list-style-type: none;
+}
+.eight-boxes li{
+    display: inline-block;
+    opacity: 0.4;
+}
+.eight-boxes li+li{
+    margin-left: 5%;
+}
