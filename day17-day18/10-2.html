@@ -12,8 +12,11 @@
 <script>
 
     function dec2bin(decNumber) {
-        decNumber = Number(decNumber);
-        var remain = Number(decNumber),result = "";//result设置为字符串
+        //decNumber = Number(decNumber);
+        //var remain = Number(decNumber);
+        decNumber = parseInt(decNumber);
+        var remain = parseInt(decNumber);
+        var result = "";//result设置为字符串
         var x = Number(document.getElementById("bin-bit").value);
 
        if (remain <0||remain %1 !==0){
@@ -28,30 +31,30 @@
            }
 
             /*return result;*/
-             var y = result.length;
-            var i = x-y;
-            if(i >0){
-                for(i;i>0;i--){
-                    result="0"+result;
+           var y = result.length;
+           var i = x-y;
+           if(i >0){
+               for(i;i>0;i--){
+                   result="0"+result;
 
-                }
-                return result;
-            }
-            else if(i===0){
-                return result;
-            }
-            else {
+               }
+               return result;
+           }
+           else if(i===0){
+               return result;
+           }
+           else {
                 alert("最初设置的位数不够长");
                 console.log("最初设置的位数不够长");
                 return result;
-            }
+           }
         }   // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
 
     }
     document.getElementById("trans-btn").onclick=function () {
-        var result2 = dec2bin(document.getElementById("dec-number").value);
-        console.log(result2.length);
-        document.getElementById("result").innerHTML = result2;
+        var result = dec2bin(document.getElementById("dec-number").value);
+        console.log(result.length);
+        document.getElementById("result").innerHTML = result;
     }
  /*   document.getElementById("trans-btn").onclick=function dec2bin() {
 
@@ -73,7 +76,31 @@
     }*/
     // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
     // Some coding
+    var isPalindrome = function(x) {
+        var y = x.toString();
+        var z = y.split("");
+        console.log(z);
+        var biao = parseInt(z.length/2);
+        var wei = parseInt(z.length-1);
+        console.log(wei);
+        if(z.length===1){
+            console.log("true");
+        }
+        else {
+            for(i=0;i<biao;i++){
+                console.log(z[i]);
+                console.log(z[wei]);
+                if(z[i]===z[wei-i]){
+                    console.log("true");
+                }
+                else{
+                    console.log("false");
+                }
+            }
+        }
 
+    };
+    isPalindrome(1000021);
 </script>
 </body>
 </html>

@@ -16,6 +16,9 @@
 </head>
 <body>
     <button id="start">开始</button>
+    <section id="content">
+
+    </section>
 <script type="text/javascript">
    /* var n,m;
     for(n=1;n<10;n++){
@@ -24,7 +27,7 @@
             console.log(n+ "*" + m+ "="+ t)
         }
     }*/
-    document.getElementById("start").onclick = function () {
+    /*document.getElementById("start").onclick = function () {
         document.write("<table>");
         for(var n=1;n<10;n++){
             document.write("<tr>");
@@ -35,6 +38,27 @@
             }
             document.write("</tr>");
         }
+    }*/
+    //以下代码本想利用另一种方式进行输出，可惜不能换行.
+    //现在可以了
+    var t="", msg1 = "", msg2 = "";
+    document.getElementById("start").onclick = function () {
+        for (var n = 1; n < 10; n++) {
+            for (var m = 1; m <= n; m++) {
+                if(m<n){
+                    t = m * n;
+                    msg1 += m + "X" + n + "=" + t +" ";
+                }
+                else {
+                    t = m * n;
+                    msg1 += m + "X" + n + "=" + t +" "+'\<br>';
+                }
+            }
+            /*msg += msg + '<br>';*/
+            //msg2 = msg1 + '\<br>';
+            console.log(msg1);
+        }
+        document.getElementById('content').innerHTML = msg1;
     }
 </script>
 </body>

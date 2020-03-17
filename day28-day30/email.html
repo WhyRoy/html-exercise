@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <style>
+        .outsider{
+            box-sizing: border-box;
+            width: 250px;
+            height: 250px;
+            margin: 250px auto;
+        }
+        .email-sug {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 14px;
+        }
+        li:hover{
+            background-color: lightskyblue;
+        }
+        .selectedLi{
+            background-color:lightpink;
+        }
+    </style>
+</head>
+
+<body onload="autoFocus()">
+<div class="outsider">
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+</div>
+
+<script>
+    var email = document.getElementById("email-input");
+    var emailSug = document.getElementById("email-sug-wrapper");
+
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+    //增加一个变量，用于存储当前选中的提示li的序号。
+    var nowSelectTipIndex = 0;
+
+    //进入页面输入框获得焦点
+    function autoFocus(){
+        email.focus();
+    }
+
+
+
+
+    //获取用户输入
+    function getInput() {
+        var str = email.value.trim();
+        str = HTMLEncode(str);
+        //console.log(str);
+        return str;
+    }
+
+    //生成提示框中的提示内容
+    function promptContent() {
+
+        var str = getInput();
+        var str1, str2;//str1用来保存@之前的字符，str2用来保存之后的
+        var arr = new Array();
+        var flag = 0;
+        //用户的输入有三种情况：1.还没输入完 2.输了@，后面的输入也符合提示内容 3.输了@，但后面的输入不符合提示内容。
+        //先把1分一类，2与3分一类
+        if (str === ''|| str ===undefined) {
+            hide();
+        }
+        else{
+            if (str.indexOf("@") === -1) {
+                show();
+                str1 = str;                                         //假如没有输入@，说明还没有输入完毕，这时候str的值可以直接赋给str1
+            }
+            else {
+                show();
+                str1 = str.substring(0, str.indexOf("@"));//前包后不包
+                str2 = str.substring(str.indexOf("@") + 1);
+                //console.log(str2);
+            }
+            //把第二类单拎出来，生成提示框，并给个标志，这样没有标志的（flag=0）就是第一类和第三类
+            for (var i = 0; i < postfixList.length; i++) {
+                if (postfixList[i].indexOf(str2) === 0) {            //如果str2的内容在建议列表中排第一个。
+                    arr.push(str1 + "@" + postfixList[i]);          //数组就保存完整的邮箱，这里可以是多个，比如@1，可能就是126或163
+                    flag = 1;                                       //把标志位置为1
+                }
+            }
+            /*if (flag === 0) {                                       //说明此时建议列表排第一的和输入不一样
+                for (var i = 0; i < postfixList.length; i++) {
+                    arr.push(str1 + "@" + postfixList[i]);          //把这些都存入数组，将会显示全部的提示，但我觉着这样不妥。
+                }
+            }*/
+            if (flag === 0) {                                       //用户的输入有三种情况：1.还没输入完 2.输了@，后面的输入也符合提示内容 3.输了@，但后面的输入不符合提示内容。
+                if (str.indexOf('@') === -1) {
+                    for (i = 0; i < postfixList.length; i++) {
+                        arr.push(str1 + "@" + postfixList[i]);
+                    }
+                }
+                else {                             //第三类输入与所有的提示都不符，直接隐藏输入框
+                    hide();
+                }
+            }
+        }
+
+        //arr[nowSelectTipIndex].className ='selectedLi';
+        //console.log(arr);
+        console.log(nowSelectTipIndex);
+        //console.log(arr[nowSelectTipIndex].className);
+        return arr;                             //截止目前，arr里面已经以数组的形式保存了所有的提示内容
+    }
+
+    //将提示框的内容添加到email-sug-wrapper中，就是把arr里的内容整到ul中
+    function promptEmail() {
+        var len = emailSug.childNodes.length;
+        //removechild()正常的删除全部节点，应该从后面往前删除。
+        //原因是当你把索引为0的子节点删除后，那么原来索引为1节点此时它的索引变成0了，而这时变量i已经变成1了，程序继续走时就会删除原先索引为２的现在为1的节点，这样程序运行的结果就是只删除了一半的子节点。
+        for (var i = len - 1; i >= 0; i--) {
+            emailSug.removeChild(emailSug.childNodes[i]);
+        }
+        var arr = promptContent();
+        for (var i = 0; i < arr.length; i++) {          //把arr里的项目添加到ul中了，一一对应
+            var li = document.createElement('li');
+            li.innerHTML = arr[i];
+            emailSug.appendChild(li);
+        }
+        document.getElementsByTagName("li")[nowSelectTipIndex].className = 'selectedLi';//选中的li被委派新的class，有不同的样式
+
+    }
+
+    //判断ul应该的显示隐藏状态
+    /*function emailSugShoworHide() {
+        var str = getInput();
+        if (str == "") {
+            hide();
+        }
+        else {
+            show();
+        }
+    }*/
+
+    //隐藏提示框
+    function hide() {
+        emailSug.style.visibility = "hidden";
+    }
+    //显示提示框
+    function show() {
+        emailSug.style.visibility = "visible";
+    }
+
+    //输入监听
+    email.addEventListener("keyup", function (event) {
+        var event = event || window.event;
+        //如果按键不是上下及回车重置选中状态，就是不是输入的这几个键，就一直用默认的选中值也就是第一个
+        if (event.keyCode !== 13 && event.keyCode != 108 && event.keyCode != 38 && event.keyCode != 40) {
+            resetSelected();
+        }
+        if (event.keyCode === 38) {          //上键
+            if (nowSelectTipIndex == 0) {
+                nowSelectTipIndex = emailSug.childNodes.length - 1;
+            } else {
+                nowSelectTipIndex--;
+            }
+        }
+        if (event.keyCode == 40) {          //下键
+            if (nowSelectTipIndex >= emailSug.childNodes.length - 1) {
+                nowSelectTipIndex = 0;
+            } else {
+                nowSelectTipIndex++;
+            }
+        }
+        if(event.keyCode == 27){            //按下esc键，会全选中已经输入的字符
+            email.select();
+        }
+        promptEmail();      //会把输入传给ul
+        //emailSugShoworHide();//判断显示不显示ul
+        //其实上面两个函数可以结合，完全可以不写emailSugShoworHide
+        if (event.keyCode == 13 || event.keyCode == 108) {
+            // 按了回车键就从当前提示框中选第 nowSelectTipIndex 个Li，将其HTML内容解码后填到input中
+            email.value = emailSug.childNodes[nowSelectTipIndex].innerText;
+            hide();
+        }
+    });
+
+    //点击提示框输入
+    emailSug.onclick = function (ev) {
+        var ev = ev || window.event;
+        var target = ev.target || ev.srcElement;
+        if (target.nodeName.toLowerCase() == "li") {
+            email.value = target.innerText;//HTML反转义
+            hide();
+        }
+        email.focus();
+
+    };
+
+    //HTML转义
+    function HTMLEncode(html) {
+        var temp = document.createElement("div");
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    }
+
+    function resetSelected() {
+        nowSelectTipIndex = 0;
+
+    }
+
+
+</script>
+</body>
+
+</html>
+

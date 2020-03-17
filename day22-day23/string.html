@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+</head>
+<body>
+<div>
+    <label>String A:
+        <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+    </label>
+    <textarea id="str-a"></textarea>
+    <label>String B:
+        <input id="radio-b" type="radio" name="str-obj" value="b">
+    </label>
+    <textarea id="str-b"></textarea>
+    <label>Num A：<input id="num-a" type="number" value="0"></label>
+    <label>Num B：<input id="num-b" type="number" value="1"></label>
+</div>
+<div id="oDiv">
+    <button id="btn1">获取当前选中输入的内容长度</button>
+    <button id="btn2">当前选中输入中的第3个字符</button>
+    <button id="btn3">把两个输入框的文字连接在一起输出（concat）</button>
+    <button id="btn4">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+    <button id="btn5">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+    <button id="btn6">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+    <button id="btn7">当前选中输入框的行数</button>
+    <button id="btn8">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+    <button id="btn9">把所选输入框中的内容全部转为大写</button>
+    <button id="btn10">把所选输入框中的内容全部转为小写</button>
+    <button id="btn11">把所选输入框中内容的半角空格全部去除</button>
+    <button id="btn12">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+</div>
+<p id="result"></p>
+<script>
+    function length(stra,strb) {
+        var check = document.getElementsByName("str-obj");
+        var result = document.getElementById("result");
+        console.log(check.length);
+        /*var selectvalue = null;
+        for (var i = 0;i < check.length;i++){
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                console.log(selectvalue);
+                if (selectvalue === 'a') {
+                    result.innerHTML = stra.length;
+                }
+                else{
+                    result.innerHTML = strb.length;
+                }
+            }
+        }*/
+        if (check[0].checked === true) {
+            result.innerHTML = stra.length;
+        }
+        else if (check[1].checked === true) {
+            result.innerHTML = strb.length;
+        }
+            
+    }
+    function third(stra,strb) {
+        var check = document.getElementsByName("str-obj");
+        var result = document.getElementById("result");
+        console.log(check.length);
+        var selectvalue = null;
+        for (var i = 0;i < check.length;i++){
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                console.log(selectvalue);
+                if (selectvalue === 'a') {
+                    result.innerHTML = stra[2];
+                }
+                else{
+                    result.innerHTML = strb[2];
+                }
+            }
+        }
+    }
+    function add(stra,strb){
+        var add = stra + strb;
+        result.innerHTML = add;
+    }
+    function indexof(stra,strb){
+        var place = stra.indexOf(strb);
+        result.innerHTML = place;
+    }
+    function lastindexof(stra,strb){
+        var place = strb.lastIndexOf(stra);
+        result.innerHTML = place;
+    }
+    function slice(stra,strb,numa,numb){
+        var check = document.getElementsByName("str-obj");
+        console.log(check.length);
+        var selectvalue = null;
+        for (var i = 0;i < check.length;i++){
+            if (check[i].checked === true){
+                selectvalue = check[i].value;
+                console.log(selectvalue);
+                if (selectvalue === 'a'){
+                    result.innerHTML = stra.slice(numa,numb);
+                }
+                else {
+                    result.innerHTML = strb.slice(numa,numb);
+                }
+                break;
+            }
+        }
+    }
+    function split_it(stra,strb){
+        var check = document.getElementsByName("str-obj");
+        var result = document.getElementById("result");
+        console.log(check.length);
+        var selectvalue = null;
+        for (var i = 0;i < check.length;i++){
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                console.log(selectvalue);
+                if (selectvalue === 'a') {
+                    result.innerHTML = stra.split("\n").length;
+                }
+                else{
+                    result.innerHTML = strb.split("\n").length;
+                }
+            }
+        }
+    }
+    function substr(stra,strb,numa,numb){
+        var check = document.getElementsByName("str-obj");
+        console.log(check.length);
+        var selectvalue = null;
+        for (var i = 0;i < check.length;i++){
+            if (check[i].checked === true){
+                selectvalue = check[i].value;
+                console.log(selectvalue);
+                if (selectvalue === 'a'){
+                    result.innerHTML = stra.substr(numa,numb);
+                }
+                else {
+                    result.innerHTML = strb.substr(numa,numb);
+                }
+                break;
+            }
+        }
+    }
+    function toup(stra,strb){
+        var check = document.getElementsByName("str-obj");
+        var selectvalue = null;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                if (selectvalue === 'a'){
+                    result.innerHTML = stra.toUpperCase();
+                }
+                else {
+                    result.innerHTML = strb.toUpperCase();
+                }
+            }
+        }
+    }
+    function tolow(stra,strb){
+        var check = document.getElementsByName("str-obj");
+        var selectvalue = null;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                if (selectvalue === 'a'){
+                    result.innerHTML = stra.toLowerCase();
+                }
+                else {
+                    result.innerHTML = strb.toLowerCase();
+                }
+            }
+        }
+    }
+    function replacespace(stra,strb){
+        var check = document.getElementsByName("str-obj");
+        var selectvalue = null;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                if (selectvalue === 'a'){
+                    var res = stra.replace(/ /g,'');
+                    result.innerHTML = res;
+                }
+                else {
+                    var res = strb.replace(/ /g,'');
+                    result.innerHTML = res;
+                }
+            }
+        }
+    }
+    function replace_a(stra,strb){
+        var check = document.getElementsByName("str-obj");
+        var selectvalue = null;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].checked === true) {
+                selectvalue = check[i].value;
+                if (selectvalue === 'a'){
+                    var res = stra.replace(/a/g,strb);
+                    result.innerHTML = res;
+                }
+                else {
+                    var res = strb.replace(/a/g,stra);
+                    result.innerHTML = res;
+                }
+            }
+        }
+    }
+    window.onload = function () {
+        var oDiv = document.getElementById("oDiv");
+        oDiv.onclick = function (ev) {
+            var ev = ev||window.event;
+            var target = ev.target;
+            var result = document.getElementById("result");
+            var firstInput = document.getElementById("str-a").value;
+            var secondInput = document.getElementById("str-b").value;
+            var numa = document.getElementById("num-a").value;
+            var numb = document.getElementById("num-b").value;
+            if (target.nodeName === "BUTTON") {
+                switch (target.id) {
+                    case 'btn1':
+                        length(firstInput,secondInput);
+                        break;
+                    case 'btn2':
+                        third(firstInput,secondInput);
+                        break;
+                    case 'btn3':
+                        add(firstInput,secondInput);
+                        break;
+                    case 'btn4':
+                        indexof(firstInput,secondInput);
+                        break;
+                    case 'btn5':
+                        lastindexof(firstInput,secondInput);
+                        break;
+                    case 'btn6':
+                        slice(firstInput,secondInput,numa,numb);
+                        break;
+                    case 'btn7':
+                        split_it(firstInput,secondInput);
+                        break;
+                    case 'btn8':
+                        substr(firstInput,secondInput,numa,numb);
+                        break;
+                    case 'btn9':
+                        toup(firstInput,secondInput);
+                        break;
+                    case 'btn10':
+                        tolow(firstInput,secondInput);
+                        break;
+                    case 'btn11':
+                        replacespace(firstInput,secondInput);
+                        break;
+                    case 'btn12':
+                        replace_a(firstInput,secondInput);
+                        break;
+
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

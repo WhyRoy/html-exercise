@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="drawing" width="200px" height="200px">A drawing of something</canvas>
+</body>
+<script>
+    var drawing = document.querySelector('#drawing');
+
+    //判断浏览器是否支持canvas
+    if (drawing.getContext) {
+        //获取2d上下文
+        var context = drawing.getContext('2d');
+
+        //开始路径。canvas只直接支持矩形，其他路径要自己绘制
+        context.beginPath();
+
+        //绘制外圆
+        context.arc(100,100,99,0,2*Math.PI,false);
+
+        //绘制内圆
+        context.moveTo(194,100);
+        context.arc(100,100,95,0,2*Math.PI,false);
+
+        /*//绘制分针，这样绘制不好，不如编号圆心座标为原点
+        context.moveTo(100,100);
+        context.lineTo(100,15);
+
+        //绘制时针
+        context.moveTo(100,100);
+        context.lineTo(35,100);*/
+
+        //变换原点
+        context.translate(100,100);
+
+        //旋转时针
+        context.rotate(1);//这一行往下，所有的内容都会被旋转
+
+        //绘制分针
+        context.moveTo(0,0);
+        context.lineTo(0,-85);
+
+        //绘制时针
+        context.moveTo(0,0);
+        context.lineTo(-65,0);
+
+
+
+        //描边路径
+        context.stroke();
+
+        //绘制文本,正常
+        context.font = 'bold 14px Arial';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText('12',0,-80);
+
+        //起点对齐
+        context.font = 'bold 14px Arial';
+        context.textAlign = 'start';
+        context.textBaseline = 'middle';
+        context.fillText('12',0,-60);
+
+        //终点对齐
+        context.font = 'bold 14px Arial';
+        context.textAlign = 'end';
+        context.textBaseline = 'middle';
+        context.fillText('12',0,-40);
+    }
+</script>
+</html>

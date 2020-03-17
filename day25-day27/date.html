@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+    <style type="text/css" >
+        div{
+            margin: 20em auto;
+        }
+        p{
+            text-align: center;
+            font-size: 7em;
+        }
+    </style>
+</head>
+<body >
+    <div>
+        <p id="first"></p>
+        <p id="second"></p>
+    </div>
+
+</body>
+<script>
+    window.onload = display1;
+    function display1() {
+        var now = new Date();
+        var year = now.getFullYear();   //年份
+        var month = now.getMonth();     //月份
+        var date = now.getDate();       //天
+        var day = now.getDay();         //星期
+        var hours = now.getHours();     //小时
+        var minutes = now.getMinutes();  //分钟
+        var seconds = now.getSeconds();  //秒
+        var AP = null;
+        var h1 = change_hour();
+        //var h = checktime(h1);
+        month = checktime(month + 1);
+        date = checktime(date);
+        var hour = checktime(hours);
+        minutes = checktime(minutes);
+        seconds = checktime(seconds);
+        var chn_week = Chinese_Weekend(day);
+        var eng_week = eng_weekend(day);
+        var p1 = document.getElementById("first");
+        var p2 = document.getElementById("second");
+        p1.innerHTML = year + "年" + month +"月" + date + "日" + "星期" + chn_week + hour +":" + minutes +":" + seconds;
+        p2.innerHTML = year + "-" +month + "-" + date +" " + eng_week + h1 +":" + minutes + ":" + seconds + last();
+        setTimeout(display1,500);
+        function checktime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function Chinese_Weekend(i) {
+            var arr = new Array(7);
+            if (i === 0) {
+                arr[0] = "日"
+            }
+            else if (i === 1) {
+                arr[1] = "一"
+            }
+            else if (i === 2) {
+                arr[2] = "二"
+            }
+            else if (i === 3) {
+                arr[3] = "三"
+            }
+            else if (i === 4) {
+                arr[4] = "四"
+            }
+            else if (i === 5) {
+                arr[5] = "五"
+            }
+            else  {
+                arr[6] = "六"
+            }
+            return arr[i];
+        }
+        function eng_weekend(i) {
+            var arr = new Array(7);
+            if (i === 0) {
+                arr[0] = "Sunday"
+            }
+            else if (i === 1) {
+                arr[1] = "Monday"
+            }
+            else if (i === 2) {
+                arr[2] = "Tuesday"
+            }
+            else if (i === 3) {
+                arr[3] = "Wednesday"
+            }
+            else if (i === 4) {
+                arr[4] = "Thursday"
+            }
+            else if (i === 5) {
+                arr[5] = "Friday"
+            }
+            else  {
+                arr[6] = "Saturday"
+            }
+            return arr[i];
+        }
+        function change_hour() {
+            if (hours > 12) {
+                return checktime(hours - 12);
+            }
+            else
+                return checktime(hours);
+        }
+        function last() {
+            if (hours > 12) {
+                AP = "PM";
+            }
+            else
+                AP = "AM";
+            return AP;
+        }
+    }
+
+
+
+</script>
+</html>

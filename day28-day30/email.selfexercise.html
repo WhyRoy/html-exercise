@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>emial</title>
+    <style>
+        .outsider{
+            box-sizing: border-box;
+            width: 250px;
+            height: 250px;
+            margin: 250px auto;
+        }
+        .email-sug {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 14px;
+        }
+        li:hover{
+            cursor: pointer;
+            background-color: lightskyblue;
+        }
+        .selectedLi{
+
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+<div class="outsider">
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+</div>
+
+</body>
+<script>
+    // 邮箱后缀List参考
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+    // 获取输入
+    var email = document.querySelector("input");//不能直接加后缀.value，因为后面要进行转码
+
+    //选择提示的列表HTML
+    var ul = document.querySelector("ul");
+
+    //当前选中（相中的方式是用上下键）的li需要有不同的样式，所以需要一个标志
+    var nowSelectedLi = 0;//默认是第一个被选中，被选中的li有不同的样式
+
+    //进入页面输入框获得焦点
+    function focus() {
+        email.focus();
+    }
+
+    //两个函数控制提示框的显隐
+    function hide() {
+        ul.style.display="none";
+    }
+    function show() {
+        ul.style.display="block";
+    }
+
+    //获取用户输入
+    function getInput() {
+        var str = email.value.trim();
+        //str = HTMLEncode(str);
+        //console.log(str);
+        return str;
+    }
+
+    //生成提示框提示内容
+    function inputToArr() {
+        var str = getInput();
+        var arr =[];
+        var str1 , str2;
+        var flag = 0;
+        if (str===""||str === undefined){
+            hide();
+        }
+        else{
+            if (str.indexOf('@') === -1) {
+                str1 = str;
+                for (var i = 0; i < postfixList.length; i++) {
+                    arr.push(str1 + '@' +postfixList[i]);
+                }
+                show();
+            }
+            else{
+                str1 = str.slice(0,str.indexOf('@'));
+                str2 = str.slice(str.indexOf("@")+1,str.length);
+                if (str2 === '') {
+                    for (var i = 0; i < postfixList.length; i++) {
+                        arr.push(str1 + '@' +postfixList[i]);
+                    }
+                    show();
+                }
+                else{
+                    for (var i = 0; i < postfixList.length; i++) {
+                        if (postfixList[i].indexOf(str2) === -1){
+                            //hide();
+                            //arr.push(str1 + '@' +postfixList[i]);
+                            show();
+                        }
+                        else if (postfixList[i].indexOf(str2) === 0) {
+                            arr.push(str1 + '@' + postfixList[i]);
+                        }
+                    }
+                    /*if (postfixList.indexOf(str2) === -1) {
+                        hide();
+                    }*/
+
+                    /*else if(postfixList.valueOf(str2) === 0){
+                        for (var j = 0; j < length; j++) {
+                            arr.push(str1 + '@' + postfixList[j]);
+                        }
+                    }*/
+                }
+            }
+
+        }
+        return arr;
+    }
+    
+    
+    function arrToUl() {
+        //删除ul的原有节点
+        var len = ul.childNodes.length;
+        //console.log(ul);
+        for (var i = len-1; i >= 0; i--) {
+            ul.removeChild(ul.childNodes[i]);
+        }
+
+        var arr = inputToArr();
+        for (var i = 0; i < arr.length; i++) {
+            var li = document.createElement('li');
+            li.innerHTML=arr[i];
+            ul.appendChild(li);
+        }
+        //document.querySelector("li")[nowSelectedLi].setAttribute('class','selectedLi');
+        document.querySelectorAll("li")[nowSelectedLi].className='selectedLi';
+    }
+
+    //重置选择
+    function reSetSelection(){
+        nowSelectedLi = 0;
+    }
+
+    focus();
+    //输入监听
+    email.addEventListener('keyup',function (event) {
+        var e = event || window.event;
+
+        inputToArr();
+        arrToUl();
+        //需要考虑一些按键：esc、回车、上下
+        if (e.keyCode === 27) {
+            email.select();
+            hide();
+        }
+        else if (e.keyCode === 13) {
+            email.value = document.querySelector('.selectedLi').innerHTML;
+            hide();
+        }
+        else if (e.keyCode === 38) {
+            if (nowSelectedLi === 0) {
+                nowSelectedLi = ul.childNodes.length-1;
+            }
+            else{
+                nowSelectedLi--;
+            }
+        }
+        else if (event.keyCode === 40) {          //下键
+            if (nowSelectedLi >= ul.childNodes.length - 1) {
+                nowSelectTipIndex = 0;
+            } else {
+                nowSelectTipIndex++;
+            }
+        }
+    });
+    ul.onclick = function (e) {
+        var target = e.target;
+        if (target.nodeName.toLowerCase() === 'li') {
+            email.value = target.innerHTML;
+            hide();
+            focus();
+        }
+    }
+</script>
+</html>

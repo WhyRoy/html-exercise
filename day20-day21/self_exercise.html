@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+<script>
+    var btn = document.querySelector("button");
+    var id = document.getElementById(name);
+    function submit() {
+        var text = document.querySelector("input").value;
+        console.log(text);
+    }
+    btn.addEventListener('click',submit);
+    /*btn.onclick = submit;*/
+    /*function key() {
+        if (event.keyCode==13){
+            submit();
+        }
+        if (event.keyCode==27){
+            document.querySelector("input").value = '';
+        }
+    }
+    btn.onkeydown = key;*/
+    function keydown(e) {
+        switch (e.keyCode) {
+            case 13:
+                submit();
+                break;
+            case 27:
+                document.querySelector("input").value = '';
+                break
+        }
+    }
+    var body = document.querySelector("body");
+    /*body.onkeydown = keydown;*/
+    body.addEventListener('keydown',keydown);
+    /*window.onkeydown = keydown();*/
+</script>
+</body>
+</html>

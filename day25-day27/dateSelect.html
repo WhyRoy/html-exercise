@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+</head>
+<body>
+<div class="div">
+    <select id="year-select">
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        ……
+        <option value="2032">2032</option>
+    </select>
+
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="12">12</option>
+    </select>
+
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="31">31</option>
+    </select>
+
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        ……
+        <option value="23">23</option>
+    </select>
+
+    <select id="minute-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+
+    <select id="second-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+</div>
+
+
+<p id="result-wrapper">现在距离 2001年1月1日星期一 00:00:00 <span>还有</span><span></span>天<span></span>小时<span></span>分<span></span>秒</p>
+</body>
+<script>
+    var year;
+    var month;
+    var day;
+    var hour;
+    var minute;
+    var second;
+    window.onload = function () {
+        var div = document.querySelector("div");
+        div.onclick =function (ev) {
+                var ev = ev || window.event;
+                var target = ev.target;
+                if (target.nodeName.toLowerCase() === 'select') {
+                    switch (target.id) {
+                        case 'year-select':
+                            year = target.options[target.selectedIndex].value;
+                            //console.log(year);
+                            break;
+                        case 'month-select':
+                            month = target.options[target.selectedIndex].value - 1;
+                            //console.log(month);
+                            break;
+                        case 'day-select':
+                            day = target.options[target.selectedIndex].value;
+                            //console.log(day);
+                            break;
+                        case 'hour-select':
+                            hour = target.options[target.selectedIndex].value;
+                            //console.log(hour);
+                            break;
+                        case 'minute-select':
+                            minute = target.options[target.selectedIndex].value;
+                            //console.log(minute);
+                            break;
+                        case 'second-select':
+                            second = target.options[target.selectedIndex].value;
+                            //console.log(second);
+                            break;
+                    }
+                }
+                var date1 = new Date();
+                date1.setFullYear(year);
+                date1.setMonth(month);
+                date1.setDate(day);
+                date1.setHours(hour);
+                date1.setMinutes(minute);
+                date1.setSeconds(second);
+                //console.log(date1);
+                var date2 = new Date('2001/01/01 00:00:00');
+                //console.log(date2);
+                var second1 = date1.getTime();
+                var second2 = date2.getTime();
+                var mins = second1 - second2;
+                console.log(mins);
+                if (mins >= 0) {
+                    var span = document.querySelectorAll("span");
+                    span[0].innerHTML = "还有";
+                    var mDays = Math.floor(mins/(24*3600*1000));                    //计算出相差天数
+                    span[1].innerHTML = mDays;
+
+
+                    //计算出小时数
+                    var leave1=mins%(24*3600*1000) ;   //计算天数后剩余的毫秒数
+                    var hours=Math.floor(leave1/(3600*1000));
+                    span[2].innerHTML = hours;
+
+
+                    //计算相差分钟数
+                    var leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+                    var minutes=Math.floor(leave2/(60*1000));
+                    span[3].innerHTML = minutes;
+
+
+
+
+
+                    //计算相差秒数
+                    var leave3=leave2%(60*1000);      //计算分钟数后剩余的毫秒数
+                    var seconds=Math.round(leave3/1000);
+                    span[4].innerHTML = seconds;
+
+
+
+
+                }
+
+
+        }
+    };
+
+
+
+</script>
+</html>

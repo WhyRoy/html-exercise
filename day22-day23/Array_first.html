@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+    <p id="queue-cont">队列内容：apple-&gt;pear</p>
+    <div id="oDiv">
+        <button id="in-btn">入队</button>
+        <button id="out-btn">出队</button>
+        <button id="font-btn">打印队头元素内容</button>
+        <button id="empty-btn">判断队列是否为空</button>
+    </div>
+
+</body>
+<script>
+
+    var queue = ["apple", "pear"];
+    var text = document.getElementById("queue-input");
+    var display = document.getElementById("queue-cont");
+    window.onload = function () {
+        var oDiv = document.getElementById("oDiv");
+        oDiv.onclick = function (ev) {
+            var ev = ev || window.event;
+            var target = ev.target;
+            if (target.nodeName === "BUTTON") {
+            }
+            switch (target.id) {
+                case 'in-btn':
+                    console.log("1");
+                    queue.push(text.value);
+                    print();
+                    break;
+                case 'out-btn':
+                    console.log("2");
+                    queue.shift(text.value);
+                    print();
+                    break;
+                case 'font-btn':
+                    //console.log(queue[queue.length - 1]);
+                    console.log(queue[length-1]);
+                    print();
+                    break;
+                case 'empty-btn':
+                    if (queue.length > 0) {
+                        alert("not empty");
+                        print();
+                        break;
+                    }
+                    else
+                        alert("empty");
+                        print();
+                        break;
+            }
+        }
+    }
+    function print() {
+        display.innerHTML = queue.join("->");
+    }
+</script>
+</html>

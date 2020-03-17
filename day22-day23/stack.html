@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stack</title>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：applelt;-pear</p>
+    <div id="oDiv">
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+    </div>
+</body>
+    <script>
+        var stack = ["apple", "pear"];
+        var text = document.getElementById("stack-cont");
+        var input = document.getElementById("stack-input");
+        var oDiv = document.getElementById("oDiv");
+        window.onload = function () {
+            oDiv.onclick = function (ev) {
+                var ev = ev ||window.event;
+                var target = ev.target;
+                if (target.nodeName === "BUTTON") {
+                    switch (target.id) {
+                        case 'push-btn':
+                            stack.push(input.value);
+                            console.log("1");
+                            print();
+                            break;
+                        case 'pop-btn':
+                            stack.pop();
+                            console.log("2");
+                            print();
+                            break;
+                        case 'font-btn':
+                            console.log(stack[stack.length-1]);
+                            print();
+                            break;
+                        case 'empty-btn':
+                            if (stack.length>0){
+                                alert("Not Empty");
+                                break;
+                            }
+                            else
+                                alert("Empty");
+                                break;
+                    }
+                }
+            }
+        };
+        function print() {
+            text.innerHTML = stack.join("->");
+        }
+    </script>
+</html>

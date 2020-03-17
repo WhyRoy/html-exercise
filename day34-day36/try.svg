@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+        "http://www.w3.org/2000/svg">
+
+<svg width="100%" height="100%" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <!--<rect x="20" y="20" width="250" height="150"
+          style="fill:blue;stroke:pink;stroke-width:5;
+fill-opacity:0.1;stroke-opacity:0.9"/>
+
+    <circle cx="350" cy="50" r="40" stroke="black"
+            stroke-width="2" fill="yellow"/>
+
+    <line x1="0" y1="0" x2="500" y2="300"
+          style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+    <polyline points="100,600 100,450 50,450 120,250 200,450 150,450 150,600"
+              style="fill:green;stroke:black;stroke-width:2"/>
+
+    <g transform="translate(100,100)">
+        <text id="TextElement" x="0" y="0" style="font-family:Verdana;font-size:50"> It's SVG!
+            <animateMotion path="M 0 0 L 200 200" dur="5s" fill="freeze"/>
+        </text>
+    </g>-->
+    <line x1 = '25' y1 = '325' x2 = '525' y2 = '325'
+          style ="stroke:rgb(0,99,99);
+                  stroke-width:1"
+    />
+    <line x1 = '25' y1 = '325' x2 = '25' y2 = '25'
+          style ="stroke:rgb(0,99,99);
+                  stroke-width:1"
+    />
+    <rect x="34" y="205" width="32" height="120"
+        style="fill:#0DAFF4;
+        stroke:rgb(0,0,0);
+        stroke-width:1"
+    />
+    <rect x="85" y="225" width="32" height="100"
+          style="fill:#0DAFF4;
+          stroke:rgb(0,0,0);
+          stroke-width:1"
+    />
+</svg>

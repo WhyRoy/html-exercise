@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+<div id="wrapper">
+    <div id="news-top" class="section">
+        <h3>Some title</h3>
+        <div class="content">
+            <ul>
+                <li><span>HTML</span><a href="">Some Link1</a></li>
+                <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                <li><span>CSS</span><a href="">Some Link3</a></li>
+                <li><span>JS</span><a href="">Some Link4</a></li>
+            </ul>
+        </div>
+        <img src="">
+        <p class="">Some Text</p>
+    </div>
+    <div id="news-normal" class="section">
+        <h3>Some title</h3>
+        <div class="content">
+            <ul>
+                <li><span>HTML</span><a href="">Some Link1</a></li>
+                <li><span>HTML</span><a href="">Some Link2</a></li>
+                <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                <li><span>CSS</span><a href="">Some Link4</a></li>
+            </ul>
+        </div>
+        <img src="">
+        <p class=""onmouseover="function getAllListItem() {
+          
+        }">Some Text</p>
+    </div>
+</div>
+<script>
+    console.log(getAllListItem());
+    console.log(getAllListItem2());
+    console.log(findAllHtmlSpanInOneSection('news-normal'));
+    console.log(findAllHtmlSpanInOneSection2('news-normal'));
+    console.log(findListItem('news-top','JS'));
+    console.log(findListItem2('news-top','JS'));
+    console.log(getActiveLinkContent('news-normal'));
+    console.log(getActiveLinkContent2('news-normal'));
+    function getAllListItem() {
+        var x = document.getElementsByTagName("li");
+        return x;
+        // 返回页面中所有li标签
+    }
+    function getAllListItem2() {
+        var x = document.querySelectorAll("li");
+        return x;
+    }
+    function findAllHtmlSpanInOneSection(sectionId) {
+        var sec = document.getElementById(sectionId);
+        var span = sec.getElementsByTagName("span");
+        var Ay =[];
+        for (var i=0;i<span.length;i++){
+            if (span[i].innerHTML === "HTML") {
+                Ay.push(span[i]);
+            }
+        }
+        return Ay;
+        // 返回某个section下所有span中内容为HTML的span标签
+    }
+    function findAllHtmlSpanInOneSection2(sectionId) {
+        var sec = document.getElementById(sectionId);
+        var span = sec.querySelectorAll("span");
+        var Ay =[];
+        for (var i=0;i<span.length;i++){
+            if (span[i].innerHTML === "HTML") {
+                Ay.push(span[i]);
+            }
+        }
+        return Ay;
+    }
+    function findListItem(sectionId, spanCont) {
+        var sec = document.getElementById(sectionId);
+        var li = sec.getElementsByTagName("li");
+        var Ay = [];
+        for (var i = 0; i < li.length; i++) {
+            var span = li[i].getElementsByTagName("span");
+            for (var j =0;j<span.length;j++){
+                if (span[j].innerHTML===spanCont) {
+                    Ay.push(span[j].parentNode);
+                }
+            }
+        }
+        return Ay;
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+    }
+    function findListItem2(sectionId,spanCont) {
+        var sec = document.getElementById(sectionId);
+        var span = sec.querySelectorAll("li span");
+        var Ay = [];
+        for (var i=0;i<span.length;i++){
+            if (span[i].innerHTML === spanCont){
+                Ay.push(span[i].parentNode);
+            }
+        }
+        return Ay;
+    }
+    function getActiveLinkContent(sectionId) {
+        var sec = document.getElementById(sectionId);
+        var a = sec.getElementsByClassName("a");
+        var Ay = [];
+        var Ay2 = [];
+        for (var i=0;i<a.length;i++){
+            if(a[i].className === "active"){
+                Ay.push(a[i]);
+                for (var j=0; j<Ay.length;j++){
+                    Ay2.push(Ay[j].innerHTML)
+                }
+            }
+        }
+        return Ay2;
+        // 返回某个section下，class为active的链接中包含的文字内容
+    }
+    function getActiveLinkContent2(sectionId) {
+        var sec = document.getElementById(sectionId);
+        var a = sec.querySelectorAll("a.active");
+        var Ay = [];
+        //Ay.push(a.textContent);
+        Ay.push(a.innerHTML);
+
+        return Ay;
+    }
+    var twoSum = function(nums, target) {
+        var Arr = [];
+        var length1 = nums.length;
+        for (var i = 0; i <= length1-1; i++) {
+            for (var j = i+1; j <= length1-1; j++) {
+                if(nums[i] + nums[j] === target){
+                    Arr.push(i,j);
+                    //return Arr;
+                    console.log(Arr);
+                }
+            }
+        }
+        return Arr;
+
+    };
+    twoSum([3,2,4],6);
+    var reverse = function(x) {
+        if (x > -2147483648 && x <= 2147483647) {
+            var y = x.toString();
+            console.log(y);
+            var z = y.split("");
+            console.log(z);
+            if (z[0] > 0 ) {
+                //return z.reverse();
+                z.reverse();
+                console.log(z);
+                var num=Number(z.join(""));
+                console.log(num);
+                if (num <= 2147483647){
+                    return num;
+                }
+                else{
+                    return 0;
+                }
+
+                /*if(z[0] == "0"){
+                    var remain = z.slice(1);
+                    console.log(remain);
+                }*/
+                //return parseInt(z.toString());
+                //console.log(Number(remain));
+            }
+            console.log(z[0]);
+            if(z[0] == '-'){
+                var A = z.slice(1);
+                console.log(A);
+                var B = A.reverse();
+                console.log(B);
+                var num = Number(B.join(""));
+                console.log(num);
+                if (-num >= -2147483648) {
+                    return -num;
+                }
+                else{
+                    return 0;
+                }
+
+            }
+            if (z[0] == 0 && z.length == 1) {
+                return 0;
+            }
+        }
+        else {
+            return 0;
+        }
+
+         
+    };
+    reverse(-123)
+</script>
+</body>
+</html>

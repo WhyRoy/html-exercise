@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkBox</title>
+    <script src="数据用例.js"></script>
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 50%;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="region-radio-wrapper"></div>
+<div id="product-radio-wrapper"></div>
+<div id="table-wrapper"></div>
+</body>
+<script>
+    var regionGroup = document.querySelector('#region-radio-wrapper');
+    var productGroup = document.querySelector('#product-radio-wrapper');
+    var tableDiv = document.querySelector('#table-wrapper');
+
+    function checkBoxGroup(checkBoxName, data) {
+
+        var allSelect = document.createElement('input');
+        allSelect.setAttribute('type','checkbox');
+        allSelect.setAttribute('checkbox-type','all');
+        allSelect.setAttribute("value", "0");
+        var text = document.createTextNode("全选");
+        checkBoxName.appendChild(allSelect);
+        checkBoxName.appendChild(text);
+
+        for (var i = 0; i < data.length; i++) {
+            var singleSelect = document.createElement('input');
+            singleSelect.setAttribute('type','checkbox');
+            singleSelect.setAttribute("value", i + 1);
+            singleSelect.setAttribute('checkbox-type','single');
+            var singleText = document.createTextNode(data[i].text);
+            checkBoxName.appendChild(singleSelect);
+            checkBoxName.appendChild(singleText);
+        }
+
+        checkBoxName.onclick=function (event) {
+            var event = event || window.event;
+            var target = event.target || event.srcElement;
+            var len = checkBoxName.childNodes.length;
+            console.log(len);
+            var checkBoxType = target.getAttribute('checkbox-type');
+            console.log(checkBoxType);
+            var count = 0;
+            if (target.getAttribute("type") === 'checkbox') {
+                if ( checkBoxType === 'all'){
+                    if (target.checked === true) {
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].tagName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = true;
+                                console.log(checkBoxName.childNodes[i]);
+                            }
+                        }
+                    }
+                    else{
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].nodeName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = false;
+                            }
+                        }
+                    }
+                }
+                if (checkBoxType === 'single') {
+                    for (var i = 2; i < len; i++) {
+                        if (checkBoxName.childNodes[i].checked === true) {
+                            count ++;
+                        }
+                    }
+                    if (count === len/2 - 1) {
+                        allSelect.checked = true;
+                    }
+                    else if (count < len / 2 - 1 && count > 0) {
+                        allSelect.checked = false;
+                    }
+                    else if (count === 0) {
+                        target.checked = true;
+                    }
+                }
+            }
+            createTable();//这里可以加函数。
+        }
+    }
+    function getSelectData(checkBoxName) {
+        var len = checkBoxName.childNodes.length;
+        var arr = [];
+        for (var i = 2; i < len; i++) {
+            if (checkBoxName.childNodes[i].checked === true) {
+                arr.push(checkBoxName.childNodes[i+1].textContent);
+            }
+        }
+        return arr;
+    }
+    function getData() {
+        productArr = getSelectData(productGroup);
+        regionArr = getSelectData(regionGroup);
+        console.log(productArr);
+        console.log(regionArr);
+        var arr = [];
+        for (var i = 0; i < productArr.length; i++) {
+            for (var j = 0; j < regionArr.length; j++) {
+                for (var k = 0; k < sourceData.length; k++) {
+                    if (sourceData[k].product === productArr[i] && sourceData[k].region === regionArr[j]) {
+                        arr.push(sourceData[k]);
+                    }
+                }
+            }
+        }
+        return arr;
+    }
+
+    function createTable() {
+        if (tableDiv.childNodes[0]) {
+            tableDiv.removeChild(tableDiv.childNodes[0]);
+        }
+
+        table = document.createElement('table');
+        arr = getData();
+
+        productLen = productArr.length;
+        regionLen = regionArr.length;
+
+        if (productLen === 1 && regionLen >= 1) {
+            tableCase1();
+        }
+        else if(regionLen === 1 && productLen > 1){
+            tableCase2();
+        }
+        else if (regionLen > 1 && productLen > 1) {
+            tableCase3();
+        }
+        document.querySelector("#table-wrapper").appendChild(table);
+    }
+
+    function tableCase1() {
+
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+        console.log(arr.length);
+        for (var i = 0; i < arr.length; i++) {
+
+            if (i === 0) {
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].product;
+                td.rowSpan = arr.length;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+            }
+
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
+        }
+
+
+    }
+
+    function tableCase2() {
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < arr.length; i++) {
+            if (i === 0) {
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].region;
+                td.rowSpan = arr.length;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+            }
+
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
+        }
+
+    }
+
+    function tableCase3() {
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < productLen; i++) {
+            for (var z = 0; z < regionLen; z++) {
+                if (z === 0) {
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);
+                    td.innerHTML = arr[ z + i * regionLen].product;    //这里是按树型数据结构进行查找
+                    td.rowSpan = regionLen;
+                    var td = tr.insertCell(1);
+                    td.innerHTML = arr[ z + i * regionLen].region;
+
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 2);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
+                }
+                else {
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);//合并单元格后，后面行少一个单元格
+                    td.innerHTML = arr[z + i * regionLen].region;
+
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 1);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
+
+                }
+            }
+        }
+
+    }
+    // 对象或数组自己根据喜好实现均可
+    checkBoxGroup(regionGroup, [{
+        value: 1,
+        text: "华北"
+    }, {
+        value: 2,
+        text: "华南"
+    }, {
+        value: 3,
+        text: "华东"
+    }
+    ]);
+
+    checkBoxGroup(productGroup, [{
+        value: 1,
+        text: "手机"
+    }, {
+        value: 2,
+        text: "笔记本"
+    }, {
+        value: 3,
+        text: "智能音箱"
+    }
+    ]);
+</script>
+</html>

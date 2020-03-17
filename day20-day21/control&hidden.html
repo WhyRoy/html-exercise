@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        select {                                //不加点的意思是select标签
+            display: none;
+        }
+        .style1{
+            display: block;
+        }
+        .style2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<label>
+    <input id="school" name="status" type="radio">
+    School
+</label>
+<label>
+    <input id="company" name="status" type="radio">
+    Company
+</label>
+
+<select id="school-select">
+    <option>北京邮电大学</option>
+    <option>黑龙江大学</option>
+    <option>华中科技大学</option>
+</select>
+
+<select id="company-select">
+    <option>百度</option>
+    <option>爱奇艺</option>
+</select>
+<script>
+    var school = document.getElementById('school');
+    var company = document.getElementById("company");
+    function display_school() {
+        var first = document.getElementById("school-select");
+        var second = document.getElementById("company-select");
+        first.setAttribute("class","style1" );
+        second.setAttribute("class","style2");
+    }
+    /*school.onclick = display_school;*/
+    school.addEventListener('click',display_school);
+    function display_company() {
+        var first = document.getElementById("school-select");
+        var second = document.getElementById("company-select");
+        first.setAttribute("class","style2" );
+        second.setAttribute("class","style1");
+    }
+    company.onclick = display_company;
+</script>
+</body>
+</html>

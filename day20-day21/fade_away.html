@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+<script>
+
+    //注释掉的是对的，interval没学会
+    var oDiv = document.getElementById("fade-obj");
+    var fadeBtn = document.getElementById("fade-btn");
+    var opicity = 1;
+    //fadeBtn.onclick = change12;
+    fadeBtn.addEventListener('click',fadeOutLoop);
+    /*if (fadeBtn.innerHTML.toLowerCase() == "淡出") {
+        fadeBtn.onclick = setInterval(fadeOut,100);
+    }*/
+
+    /*function change12() {
+        if (opicity) {
+            opicity = Math.floor((opicity - 0.02) * 100) /100;
+            oDiv.style.opacity = opicity;
+            console.log(opicity);
+            fadeBtn.style.disabled = true;
+            setTimeout(change12,100);
+        }
+        else if (opicity === 0) {
+            fadeBtn.style.disabled = false;
+            fadeBtn.innerHTML = "淡入";
+            fadeBtn.addEventListener("click",change21);
+        }
+    }
+    function change21() {
+        if (opicity <= 1) {
+            opicity = Math.floor((opicity + 0.02)*100) / 100;
+            if(1 - opicity <= 0.01)
+                opicity = Math.floor(opicity + 0.02);
+            oDiv.style.opacity = opicity;
+            console.log(opicity);
+            fadeBtn.style.disabled = true;
+            setTimeout(change21,100);
+        }
+        else {
+            fadeBtn.innerHTML = "淡出";
+            fadeBtn.style.disabled = false;
+            fadeBtn.addEventListener("click",change12);
+        }
+    }*/
+    function fadeOut() {
+        if (opicity) {
+            opicity = Math.floor((opicity - 0.02) * 100) /100;
+            oDiv.style.opacity = opicity;
+            console.log(opicity);
+            fadeBtn.style.disabled = true;
+        }
+        else if (opicity === 0) {
+            fadeBtn.style.disabled = false;
+            fadeBtn.innerHTML = "淡入";
+            //fadeBtn.removeEventListener('click',fadeOutLoop);
+            fadeBtn.addEventListener("click",fadeAwayLoop);
+        }
+    }
+    function comeOut() {
+        if (opicity <= 1) {
+            opicity = opicity + 0.2;
+            /*if(1 - opicity <= 0.01)
+                opicity = Math.floor(opicity + 0.02);*/
+            oDiv.style.opacity = opicity;
+            console.log(opicity);
+            //fadeBtn.style.disabled = true;
+            //setTimeout(change21,100);
+        }
+        else {
+            fadeBtn.innerHTML = "淡出";
+            fadeBtn.style.disabled = false;
+            fadeBtn.addEventListener("click",fadeOutLoop);
+        }
+
+    }
+    function fadeOutLoop() {
+        var t= setInterval("fadeOut()",100);
+    }
+    function fadeAwayLoop() {
+        var t= setInterval("comeOut()",1000);
+    }
+</script>
+</body>
+</html>

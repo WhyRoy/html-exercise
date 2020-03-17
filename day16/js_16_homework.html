@@ -5,8 +5,8 @@
     <title>IFE ECMAScript</title>
 </head>
 <body>
-<input id="first-number" type="text" value="0" placeholder="第一个数字">
-<input id="second-number" type="text" value="0" placeholder="第二个数字">
+<input id="first-number" type="text"  placeholder="第一个数字">
+<input id="second-number" type="text"  placeholder="第二个数字">
 <button id="add-btn">加</button>
 <button id="minus-btn">减</button>
 <button id="times-btn">乘</button>
@@ -26,35 +26,37 @@
         }
         //document.getElementById("result").innerHTML = firstNumber + secondNumber
     };*/
-    document.getElementById("add-btn").onclick =  function Add (){
-    var firstNumber = (document.getElementById("first-number").value);
-    var secondNumber = (document.getElementById("second-number").value);
-    if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
-        document.getElementById("result").innerHTML = parseInt(firstNumber) + parseInt(secondNumber);
+    function Add(){
+        var firstNumber = (document.getElementById("first-number").value);
+        var secondNumber = (document.getElementById("second-number").value);
+        if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+            document.getElementById("result").innerHTML = parseInt(firstNumber) + parseInt(secondNumber);
+        }
+        else{
+            console.log("未输入数字");
+            alert("未输入数字")
+        }
     }
-    else{
-        console.log("未输入数字")
-        alert("未输入数字")
-    }
-    };
-    document.getElementById("minus-btn").onclick = function Minusfuction () {
+    function Mins(){
+        var firstNumber = Number(document.getElementById("first-number").value);
+        var secondNumber = Number(document.getElementById("second-number").value);
         if (!isNaN(firstNumber) && !isNaN(secondNumber)){
-            var firstNumber = Number(document.getElementById("first-number").value);
-            var secondNumber = Number(document.getElementById("second-number").value);
             document.getElementById("result").innerHTML = firstNumber - secondNumber;
         }
         else{
-            console.log("未输入数字")
+            console.log("未输入数字");
             alert("未输入数字")
         }
-
-    };
-    document.getElementById("times-btn").onclick = function mutiply () {
+    }
+    function Mul(){
         var firstNumber = Number(document.getElementById("first-number").value);
         var secondNumber = Number(document.getElementById("second-number").value);
-        document.getElementById("result").innerHTML = firstNumber * secondNumber;
-    };
-    document.getElementById("divide-btn").onclick = function divide () {
+        if(!isNaN(firstNumber)&&!isNaN(secondNumber)){
+            document.getElementById("result").innerHTML = firstNumber * secondNumber;
+        }
+
+    }
+    function Div(){
         var firstNumber = Number(document.getElementById("first-number").value);
         var secondNumber = Number(document.getElementById("second-number").value);
         if((!isNaN(firstNumber)) && (!isNaN(secondNumber))){
@@ -62,15 +64,38 @@
                 document.getElementById("result").innerHTML = firstNumber / secondNumber;
             }
             else {
-                alert("除数不能是0")
+                alert("除数不能是0");
                 console.log("除数为0")
             }
         }
         else{
-            alert("请输入数字")
+            alert("请输入数字");
             console.log("未输入数字")
         }
     }
+    document.getElementById("add-btn").onclick =  Add;
+    document.getElementById("minus-btn").onclick = Mins;
+    document.getElementById("times-btn").onclick = Mul;
+    document.getElementById("divide-btn").onclick = Div;
+    var colors = [];
+    colors.unshift("red","green");
+    console.log(colors.length);
+    colors.unshift("black");
+    var item = colors.pop();
+    console.log(item);
+    var nums= [0,5,2,7,6,9];
+    function compare(num1, num2) {
+        if (num1 < num2) {
+            return -1;
+        }
+        if (num1 > num2) {
+            return 1;
+        }
+        if (num1 === num2) {
+            return 0;
+        }
+    }
+    console.log(nums.sort(compare));
 </script>
 </body>
 </html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <canvas id="tutorial0" width="300" height="150"></canvas>
+    <canvas id="tutorial1" width="300" height="150"></canvas>
+    <canvas id="tutorial2" width="300" height="150"></canvas>
+    <canvas id="tutorial3" width="300" height="150"></canvas>
+    <canvas id="tutorial4" width="300" height="150"></canvas>
+    <canvas id="tutorial5" width="300" height="150"></canvas>
+</body>
+<script type="text/javascript">
+    window.onload = draw();
+    function draw() {
+        var arr = document.querySelectorAll('canvas');
+        console.log(arr);
+        if (arr[0].getContext) {
+           var ctx = arr[0].getContext('2d');
+           ctx.strokeRect(5,5,20,20);
+        }
+        if (arr[1].getContext) {
+            var ctx = arr[1].getContext('2d');
+            ctx.beginPath();
+            ctx.moveTo(15,15);
+            ctx.lineTo(280,140);
+            ctx.strokeStyle = "blue";
+            ctx.stroke();
+        }
+        if (arr[2].getContext) {
+            var ctx = arr[2].getContext('2d');
+            ctx.beginPath();
+            ctx.moveTo(150,75);
+            ctx.translate(150,75);
+            ctx.arc(0,0,50,0,2*Math.PI,false);
+            ctx.fillStyle ="orange";
+            ctx.fill();
+        }
+        if (arr[3].getContext) {
+            var ctx = arr[3].getContext('2d');
+            ctx.font = "15px,Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("Hello World",150,75);
+        }
+    }
+    function clock() {
+        var now = new Date();
+        var ctx = document.getElementById('tutorial4').getContext('2d');
+        ctx.save();
+        ctx.clearRect(0, 0, 150, 150);//每刷新一次，就会清除之前的
+        ctx.translate(75, 75);//原点移到75
+        ctx.scale(0.4, 0.4);//缩放0.4倍
+        ctx.rotate(-Math.PI / 2);//调整座标系为正常逻辑
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "white";
+        ctx.lineWidth = 8;
+        ctx.lineCap = "round";
+
+        // Hour marks
+        ctx.save();//配置入栈
+        for (var i = 0; i < 12; i++) {
+            ctx.beginPath();
+            ctx.fillStyle = 'black';
+            ctx.moveTo(0, 100);
+            ctx.lineTo(0, 120);
+            ctx.stroke();
+            //ctx.arc(120,0,10,0,2*Math.PI,false);
+            //ctx.fill();
+            ctx.rotate(Math.PI / 6);
+        }
+        ctx.restore();//回到上次的配置，就是把座标系再调回去
+
+        // Minute marks
+        ctx.save();//配置入栈，因为要写新的配置，保存一下原来的
+        ctx.lineWidth = 5;
+        for (i = 0; i < 60; i++) {
+            if (i % 5 !== 0) {
+                ctx.beginPath();
+                ctx.moveTo(117, 0);
+                ctx.lineTo(120, 0);
+                ctx.stroke();
+            }
+            ctx.rotate(Math.PI / 30);
+        }
+        ctx.restore();//清除lineWidth=5
+
+        var sec = now.getSeconds();
+        var min = now.getMinutes();
+        var hr = now.getHours();
+        hr = hr >= 12 ? hr - 12 : hr;
+
+        //ctx.fillStyle = "black";
+
+        // write Hours
+        ctx.save();
+        ctx.rotate(hr * (Math.PI / 6) + (Math.PI / 360) * min + (Math.PI / 21600) * sec);
+        ctx.lineWidth = 12;
+        ctx.beginPath();
+        ctx.moveTo(-20, 0);
+        ctx.lineTo(80, 0);
+        ctx.stroke();
+        ctx.restore();
+
+        // write Minutes
+        ctx.save();
+        ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.moveTo(-28, 0);
+        ctx.lineTo(112, 0);
+        ctx.stroke();
+        ctx.restore();
+
+        // Write seconds
+        ctx.save();
+        ctx.rotate(sec * Math.PI / 30);
+        ctx.strokeStyle = "#D40000";
+        ctx.fillStyle = "#D40000";
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(-30, 0);
+        ctx.lineTo(83, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(95, 0, 10, 0, Math.PI * 2, true);
+        ctx.stroke();
+        ctx.fillStyle = "rgba(0,0,0,0)";
+        ctx.arc(0, 0, 3, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.lineWidth = 14;
+        ctx.strokeStyle = '#325FA2';
+        ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
+        ctx.stroke();
+
+        ctx.restore();
+
+        window.requestAnimationFrame(clock);
+    }
+
+    window.requestAnimationFrame(clock);
+
+</script>
+</html>

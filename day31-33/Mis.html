@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="数据用例.js"></script>
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 100%;
+        }
+
+        table th {
+            vertical-align: baseline;
+            padding: 5px 15px 5px 6px;
+            background-color: #3F3F3F;
+            border: 1px solid #3F3F3F;
+            text-align: center;
+            color: #fff;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<select id="product-select">
+    <option hidden="true">商品</option>
+    <option>手机</option>
+    <option>笔记本</option>
+    <option>智能音箱</option>
+</select>
+
+<select id="region-select">
+    <option hidden="true">地区</option>
+    <option>华东</option>
+    <option>华北</option>
+    <option>华南</option>
+</select>
+<hr>
+<div id="table-wrapper">
+</div>
+<script>
+    var productSelect = document.getElementById("product-select");
+    var regionSelect = document.getElementById("region-select");
+    var tableDiv = document.getElementById("table-wrapper");
+
+
+    regionSelect.onchange = function () {
+        //渲染新的表格(根据select选项获取数据)
+        getTable();
+    };
+
+    productSelect.onchange = function () {
+        //渲染新的表格(根据select选项获取数据)
+        getTable();
+    };
+    function getData() {
+        //dosomething
+        //返回数据
+        var regionText = regionSelect.value;
+        var productText = productSelect.value;
+        var arr = [];
+        for (var i = 0; i < sourceData.length; i++) {
+            if (sourceData[i].region === regionText && sourceData[i].product === productText ) {
+                arr.push(sourceData[i]);
+            }
+        }
+        console.log(arr);
+        return arr;
+    }
+
+    function getTable() {
+        tableDiv.removeChild(tableDiv.childNodes[0]);//tableDiv的第一个节点会被删除，第一个节点就是整个表格，这样才可以每次刷新不至于累加重复
+        var table = document.createElement("table");
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0=header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            //var th = tr0.insertCell(tr0.cells.length);//这里是动态变更length，其实length的值和i是对应的
+            var th = tr0.insertCell(i);
+        /**/    th.innerHTML = headTable[i];
+        }
+
+        /*                          遍历数据 {
+                                    输出每一行的表格HTML内容
+                                } */
+
+        var arr=getData();
+        console.log('arr.length是：'+arr.length);
+        for(var i=0;i<arr.length;i++){                  //arr.length是数组的长度，这个数组不一定长度是0或1，因为第一次刷新时，还没有arr，此时为0，当两个都选择之后，就只有一个对象，所以长度是1
+            var tr=table.insertRow(table.rows.length);  //在表的行的末尾添加行
+
+            var td=tr.insertCell(0);
+            td.innerHTML=arr[i].product;
+
+            var td=tr.insertCell(1);
+            td.innerHTML=arr[i].region;
+
+            for(var j=0;j<12;j++){
+                //var td=tr.insertCell(j+2);
+                var td = tr.insertCell(tr.cells.length);
+                td.innerHTML=arr[i].sale[j];
+            }
+
+
+        }
+        /*for (var i = 0; i < 1; i++) {
+            var tr=table.insertRow(table.rows.length);//在表的行的末尾添加行
+
+            var td=tr.insertCell(0);
+            td.innerHTML=arr[i].product;
+
+            var td=tr.insertCell(1);
+            td.innerHTML=arr[i].region;
+
+            for(var j=0;j<12;j++){
+                var td=tr.insertCell(j+2);
+                td.innerHTML=arr[i].sale[j];
+            }
+        }*/
+        //把生成的HTML内容赋给table - wrapper
+        document.querySelector("#table-wrapper").appendChild(table);
+    }
+</script>
+</body>
+
+</html>

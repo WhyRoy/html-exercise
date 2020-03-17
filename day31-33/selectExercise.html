@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <script src="数据用例.js"></script>
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 100%;
+        }
+
+        table th {
+            vertical-align: baseline;
+            padding: 5px 15px 5px 6px;
+            background-color: #3F3F3F;
+            border: 1px solid #3F3F3F;
+            text-align: center;
+            color: #fff;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <select id="product-select">
+        <option hidden="true">商品</option>
+        <option>手机</option>
+        <option>笔记本</option>
+        <option>智能音箱</option>
+    </select>
+
+    <select id="region-select">
+        <option hidden="true">地区</option>
+        <option>华东</option>
+        <option>华北</option>
+        <option>华南</option>
+    </select>
+    <hr>
+    <div id="table-wrapper">
+    </div>
+</body>
+<script>
+    var productSelect = document.querySelector('#product-select');
+    var regionSelect = document.querySelector('#region-select');
+    var tableWrapper = document.querySelector('#table-wrapper');
+    function getData() {
+        var arr =[];
+        var productValue = productSelect.value;
+        var regionValue = regionSelect.value;
+        for (var i = 0; i < sourceData.length; i++) {
+            if (productValue === sourceData[i].product && regionValue === sourceData[i].region){
+                arr.push(sourceData[i]);
+            }
+        }
+        return arr;
+    }
+    function getTable() {
+        tableWrapper.removeChild(tableWrapper.childNodes[0]);
+        var table = document.createElement('table');
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        var headList = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        for (var i = 0; i < headList.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headList[i];
+        }
+        var arr = getData();
+        for (var i = 0; i < arr.length; i++) {      //arr.length是指取出的数组的个数。
+            var tr = table.insertRow(table.rows.length);
+            var td = tr.insertCell(0);
+            td.innerHTML = arr[i].product;
+            var td = tr.insertCell(1);
+            td.innerHTML = arr[i].region;
+            for (var j = 0; j < arr[i].sale.length; j++) {
+                var td = tr.insertCell(j+2);
+                td.innerHTML = arr[i].sale[j];
+            }
+
+        }
+        tableWrapper.appendChild(table);
+    }
+    productSelect.onchange = function () {
+        getTable();
+    };
+    regionSelect.onchange = function () {
+        getTable();
+    };
+</script>
+</html>
