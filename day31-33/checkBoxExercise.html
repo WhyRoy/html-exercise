@@ -34,15 +34,20 @@
 <div id="table-wrapper"></div>
 </body>
 <script>
+
+
     var regionGroup = document.querySelector('#region-radio-wrapper');
     var productGroup = document.querySelector('#product-radio-wrapper');
     var tableDiv = document.querySelector('#table-wrapper');
 
+
+
+    //这个函数是为了生成复选框和选项内容，data在后面有定义，是一个数组，里面是对象
     function checkBoxGroup(checkBoxName, data) {
 
         var allSelect = document.createElement('input');
         allSelect.setAttribute('type','checkbox');
-        allSelect.setAttribute('checkbox-type','all');
+        allSelect.setAttribute('checkbox-type','all');//这个是用setAttribute自定义的一个属性
         allSelect.setAttribute("value", "0");
         var text = document.createTextNode("全选");
         checkBoxName.appendChild(allSelect);
@@ -57,16 +62,18 @@
             checkBoxName.appendChild(singleSelect);
             checkBoxName.appendChild(singleText);
         }
+        //目前就把选项建立好了
 
+        //接下来定义点击事件的规则
         checkBoxName.onclick=function (event) {
             var event = event || window.event;
             var target = event.target || event.srcElement;
             var len = checkBoxName.childNodes.length;
-            console.log(len);
+            //console.log(len);
             var checkBoxType = target.getAttribute('checkbox-type');
-            console.log(checkBoxType);
-            var count = 0;
-            if (target.getAttribute("type") === 'checkbox') {
+            //console.log(checkBoxType);
+            var count = 0;//如果现在想不起来定义这个也没事，后面会讲为什么要定义这个
+            if (target.getAttribute("type") === 'checkbox') { //如果点击的是框，就有两种情况，一种是点击的全选框，一种是点击的单选框
                 if ( checkBoxType === 'all'){
                     if (target.checked === true) {
                         for (var i = 2; i < len; i++) {
@@ -84,7 +91,9 @@
                         }
                     }
                 }
+                //如果点击的是单选框，首先得数一遍有几个单选框被选了，这就需要定义一个count
                 if (checkBoxType === 'single') {
+
                     for (var i = 2; i < len; i++) {
                         if (checkBoxName.childNodes[i].checked === true) {
                             count ++;
@@ -104,32 +113,61 @@
             createTable();//这里可以加函数。
         }
     }
+
+    // 对象或数组自己根据喜好实现均可
+    checkBoxGroup(regionGroup, [{
+        value: 1,
+        text: "华北"
+    }, {
+        value: 2,
+        text: "华南"
+    }, {
+        value: 3,
+        text: "华东"
+    }
+    ]);
+
+    checkBoxGroup(productGroup, [{
+        value: 1,
+        text: "手机"
+    }, {
+        value: 2,
+        text: "笔记本"
+    }, {
+        value: 3,
+        text: "智能音箱"
+    }
+    ]);
+
     function getSelectData(checkBoxName) {
         var len = checkBoxName.childNodes.length;
-        var arr = [];
+        var arr1 = new Array();
         for (var i = 2; i < len; i++) {
             if (checkBoxName.childNodes[i].checked === true) {
-                arr.push(checkBoxName.childNodes[i+1].textContent);
+                arr1.push(checkBoxName. childNodes [i+1].textContent);//这里我用过innerText，死活不行，显示是undiffined。
             }
         }
-        return arr;
+        console.log(arr1);
+        return arr1;
     }
     function getData() {
         productArr = getSelectData(productGroup);
+
         regionArr = getSelectData(regionGroup);
+
         console.log(productArr);
         console.log(regionArr);
-        var arr = [];
+        var arr2 = new Array();
         for (var i = 0; i < productArr.length; i++) {
             for (var j = 0; j < regionArr.length; j++) {
                 for (var k = 0; k < sourceData.length; k++) {
                     if (sourceData[k].product === productArr[i] && sourceData[k].region === regionArr[j]) {
-                        arr.push(sourceData[k]);
+                        arr2.push(sourceData[k]);
                     }
                 }
             }
         }
-        return arr;
+        return arr2;
     }
 
     function createTable() {
@@ -139,7 +177,7 @@
 
         table = document.createElement('table');
         arr = getData();
-
+        console.log(arr)
         productLen = productArr.length;
         regionLen = regionArr.length;
 
@@ -245,10 +283,10 @@
                 if (z === 0) {
                     var tr = table.insertRow(table.rows.length);
                     var td = tr.insertCell(0);
-                    td.innerHTML = arr[ z + i * regionLen].product;    //这里是按树型数据结构进行查找
+                    td.innerHTML = arr[i * regionLen].product;
                     td.rowSpan = regionLen;
                     var td = tr.insertCell(1);
-                    td.innerHTML = arr[ z + i * regionLen].region;
+                    td.innerHTML = arr[i * regionLen].region;
 
                     for (var j = 0; j < 12; j++) {
                         var td = tr.insertCell(j + 2);
@@ -270,29 +308,6 @@
         }
 
     }
-    // 对象或数组自己根据喜好实现均可
-    checkBoxGroup(regionGroup, [{
-        value: 1,
-        text: "华北"
-    }, {
-        value: 2,
-        text: "华南"
-    }, {
-        value: 3,
-        text: "华东"
-    }
-    ]);
 
-    checkBoxGroup(productGroup, [{
-        value: 1,
-        text: "手机"
-    }, {
-        value: 2,
-        text: "笔记本"
-    }, {
-        value: 3,
-        text: "智能音箱"
-    }
-    ]);
 </script>
 </html>

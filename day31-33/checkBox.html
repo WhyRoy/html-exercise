@@ -45,9 +45,7 @@
         allSelect.setAttribute("type", "checkbox");
         allSelect.setAttribute("checkbox-type", "all");
         allSelect.setAttribute("value", "0");
-        //var text = document.createTextNode("全选");
-        var text = document.createElement('text');
-        text.textContent = '全选';
+        var text = document.createTextNode("全选");
         checkBoxName.appendChild(allSelect);
         checkBoxName.appendChild(text);
 
@@ -55,7 +53,7 @@
             var select = document.createElement("input");
             select.setAttribute("type", "checkbox");
             select.setAttribute("value", i + 1);
-            select.setAttribute("checkbox-type", "single");
+            select.setAttribute("checkbox-type", "single")
             var text = document.createTextNode(data[i].text);
             checkBoxName.appendChild(select);
             checkBoxName.appendChild(text);
@@ -64,63 +62,57 @@
         checkBoxName.onclick = function (event) {
             var event = event || window.event;
             var target = event.target || event.srcElement;
-            var len = checkBoxName.childNodes.length;
-            var count = 0;              //引入一个变量，来计数。每点击一次count就会被清零，所以后面用了for循环
-            var checkBoxType = target.getAttribute("checkbox-type");
-            if (target.getAttribute("type") === "checkbox") {            //这一行是原来的代码
-            //if(target.nodeName.toLowerCase()=='input'){               //这一行是我的代码，我不知道为什么用checkbox不完美，必须用input才正常
-                if (checkBoxType === "all") {
-                    if (target.checked === true) {
-                        for (var i = 2; i < len; i++) {                 //跳过前两个，第一个是all的复选框，第二个是文字节点
+            if (target.getAttribute("type") == "checkbox") {
+                var len = checkBoxName.childNodes.length;
+                var count = 0;
+                var checkBoxType = target.getAttribute("checkbox-type");
+                if (checkBoxType == "all") {
+
+                    if (target.checked == true) {
+                        for (var i = 2; i < len; i++) {
                             //checkBoxName.childNodes[i].getchecked = true;
-                            if (checkBoxName.childNodes[i].tagName === "INPUT") {
+                            if (checkBoxName.childNodes[i].tagName == "INPUT") {
                                 checkBoxName.childNodes[i].checked = true;
                                 console.log(checkBoxName.childNodes[i]);
                             }
                         }
                     }
                     else {
-                        //target.checked = true;      //这一行让点灭all是不可能的了，因为上面的代码中，一旦全选之后，不能单独点all来取消全部，可以改进
-                        for (var i = 2; i < len; i++) {                 //跳过前两个，第一个是all的复选框，第二个是文字节点
-                            //checkBoxName.childNodes[i].getchecked = true;
-                            if (checkBoxName.childNodes[i].tagName === "INPUT") {
-                                checkBoxName.childNodes[i].checked = false;
-                                console.log(checkBoxName.childNodes[i]);
-                            }
-                        }
+                        target.checked = true;
+
                     }
                 }
-                if (checkBoxType === "single") {
-                    for (var i = 2; i < len; i++) {             //这里用for循环的原因是数一遍有多少框被选了
-                        if (checkBoxName.childNodes[i].checked === true) {
+                if (checkBoxType == "single") {
+                    for (var i = 2; i < len; i++) {
+                        if (checkBoxName.childNodes[i].checked == true) {
                             count++;
                             console.log(checkBoxName.childNodes[i]);
                         }
                     }
                     console.log(count);
-                    if (count === len / 2 - 1 && allSelect.checked === false) {
+                    if (count == len / 2 - 1 && allSelect.checked == false) {
                         allSelect.checked = true;
                     }
                     else if (count < len / 2 - 1 && count > 0) {
                         allSelect.checked = false;
                     }
-                    else if (count === 0) {          //意思就是唯一一个也被点灭了，就要阻止这个操作
+                    else if (count == 0) {
                         target.checked = true;
                     }
                 }
 
             }
-            //createTable();                         //调用createTable函数
+            createTable();
         }
 
     }
 
-    function getSelectData(checkBoxName) {                //返回一个数组，这个数组中装着的是被勾选了的框对应的文字
+    function getData(checkBoxName) {
         var checkBoxNamelen = checkBoxName.childNodes.length;
-        var checkBoxNameArr = [];
+        var checkBoxNameArr = new Array();
 
         for (var i = 2; i < checkBoxNamelen; i++) {
-            if (checkBoxName.childNodes[i].checked === true) {
+            if (checkBoxName.childNodes[i].checked == true) {
 
                 checkBoxNameArr.push(checkBoxName.childNodes[i + 1].textContent);
             }
@@ -129,14 +121,14 @@
     }
 
     function getTableData() {
-        selectRegion = getSelectData(regionGroup);
-        selectProduct = getSelectData(productGroup);
-        var arr = [];
+        selectRegion = getData(regionGroup);
+        selectProduct = getData(productGroup);
+        var arr = new Array();
         console.log(selectRegion);
         for (var z = 0; z < selectProduct.length; z++) {
             for (var i = 0; i < selectRegion.length; i++) {
                 for (var j = 0; j < sourceData.length; j++) {
-                    if (sourceData[j].region === selectRegion[i] && sourceData[j].product === selectProduct[z]) {
+                    if (sourceData[j].region == selectRegion[i] && sourceData[j].product == selectProduct[z]) {
                         arr.push(sourceData[j]);
                     }
                 }
@@ -156,11 +148,11 @@
 
         regionLen = selectRegion.length;
         productLen = selectProduct.length;
-        if (productLen === 1 && regionLen >= 1) {
+        if (productLen == 1 && regionLen >= 1) {
 
             diffTable1();//可以换成diffTable3()，该函数包含diffTable1()的情况。
         }
-        else if (regionLen === 1 && productLen > 1) {
+        else if (regionLen == 1 && productLen > 1) {
             diffTable2();
         }
         else if (regionLen > 1 && productLen > 1) {
@@ -187,14 +179,14 @@
 
         for (var i = 0; i < arr.length; i++) {
 
-            if (i === 0) {
+            if (i == 0) {
                 var tr = table.insertRow(table.rows.length);
                 var td = tr.insertCell(0);
                 td.innerHTML = arr[i].product;
                 td.rowSpan = arr.length;
                 var td = tr.insertCell(1);
                 td.innerHTML = arr[i].region;
-                console.log(arr[0].sale.length);
+
                 for (var j = 0; j < 12; j++) {
                     var td = tr.insertCell(j + 2);
                     td.innerHTML = arr[i].sale[j];
@@ -231,7 +223,7 @@
 
         for (var i = 0; i < arr.length; i++) {
 
-            if (i === 0) {
+            if (i == 0) {
                 var tr = table.insertRow(table.rows.length);
                 var td = tr.insertCell(0);
                 td.innerHTML = arr[i].region;
@@ -270,10 +262,10 @@
 
         for (var i = 0; i < productLen; i++) {
             for (var z = 0; z < regionLen; z++) {
-                if (z === 0) {
+                if (z == 0) {
                     var tr = table.insertRow(table.rows.length);
                     var td = tr.insertCell(0);
-                    td.innerHTML = arr[z + i * regionLen].product;//这里是按树型数据结构进行查找
+                    td.innerHTML = arr[z + i * regionLen].product;
                     td.rowSpan = regionLen;
                     var td = tr.insertCell(1);
                     td.innerHTML = arr[z + i * regionLen].region;
