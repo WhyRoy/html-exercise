@@ -67,7 +67,7 @@
 
         var str = getInput();
         var str1, str2;//str1用来保存@之前的字符，str2用来保存之后的
-        var arr = new Array();
+        var arr = [];
         var flag = 0;
         //用户的输入有三种情况：1.还没输入完 2.输了@，后面的输入也符合提示内容 3.输了@，但后面的输入不符合提示内容。
         //先把1分一类，2与3分一类
@@ -87,23 +87,25 @@
             }
             //把第二类单拎出来，生成提示框，并给个标志，这样没有标志的（flag=0）就是第一类和第三类
             for (var i = 0; i < postfixList.length; i++) {
-                if (postfixList[i].indexOf(str2) === 0) {            //如果str2的内容在建议列表中排第一个。
-                    arr.push(str1 + "@" + postfixList[i]);          //数组就保存完整的邮箱，这里可以是多个，比如@1，可能就是126或163
-                    flag = 1;                                       //把标志位置为1
+                if (postfixList[i].indexOf(str2) === 0) {            //如果str2的内容与建议列表的第i个开头一样
+                    arr.push(str1 + "@" + postfixList[i]);           //数组就保存完整的邮箱，这里可以是多个，比如@1，可能就是126或163
+                    flag = 1;                                        //把标志位置为1
                 }
             }
+            //这时的arr数组保存了开头一致的几个邮箱
             /*if (flag === 0) {                                       //说明此时建议列表排第一的和输入不一样
                 for (var i = 0; i < postfixList.length; i++) {
                     arr.push(str1 + "@" + postfixList[i]);          //把这些都存入数组，将会显示全部的提示，但我觉着这样不妥。
                 }
             }*/
+
             if (flag === 0) {                                       //用户的输入有三种情况：1.还没输入完 2.输了@，后面的输入也符合提示内容 3.输了@，但后面的输入不符合提示内容。
                 if (str.indexOf('@') === -1) {
                     for (i = 0; i < postfixList.length; i++) {
                         arr.push(str1 + "@" + postfixList[i]);
                     }
                 }
-                else {                             //第三类输入与所有的提示都不符，直接隐藏输入框
+                else { //前面符合未输入@ 和 @之后的内容与提示有相同的两种情况，接下来讨论一种@后面的字符和输入不符的情况                            //第三类输入与所有的提示都不符，直接隐藏输入框
                     hide();
                 }
             }

@@ -1,0 +1,26 @@
+.container{
+    width: 75%;
+    /*max-width: 1000px;*/
+    margin: 0 auto;
+}
+.inf{
+    line-height: 2em;
+}
+.inf span{
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 1em;
+    margin-left: 4em;
+}
+.inf span:nth-of-type(1){
+    /*text-indent: 4em;*/
+    margin-left: 0;
+}
+.inf1{
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}
+.inf1 span{
+    font-weight: bold;
+    display: block;
+}

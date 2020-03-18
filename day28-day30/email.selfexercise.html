@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>emial</title>
+    <title>email</title>
     <style>
         .outsider{
             box-sizing: border-box;
@@ -72,13 +72,13 @@
         return str;
     }
 
-    //生成提示框提示内容
+    //生成提示框提示内容，起一个整合的作用
     function inputToArr() {
         var str = getInput();
         var arr =[];
         var str1 , str2;
-        var flag = 0;
-        if (str===""||str === undefined){
+        //var flag = 0;
+        if (str === ""||str === undefined){
             hide();
         }
         else{
@@ -90,7 +90,7 @@
                 show();
             }
             else{
-                str1 = str.slice(0,str.indexOf('@'));
+                str1 = str.slice(0,str.indexOf('@'));//注意这时的str1是不包含@的，规律就是前包后不包
                 str2 = str.slice(str.indexOf("@")+1,str.length);
                 if (str2 === '') {
                     for (var i = 0; i < postfixList.length; i++) {
@@ -175,9 +175,9 @@
         }
         else if (event.keyCode === 40) {          //下键
             if (nowSelectedLi >= ul.childNodes.length - 1) {
-                nowSelectTipIndex = 0;
+                nowSelectedLi = 0;
             } else {
-                nowSelectTipIndex++;
+                nowSelectedLi++;
             }
         }
     });
