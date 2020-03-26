@@ -147,10 +147,11 @@
             ctx.restore();
         }
         ctx.restore();
-        window.requestAnimationFrame(clock);
+        //window.requestAnimationFrame(clock);
+        setTimeout(clock,500);
     }
-    window.requestAnimationFrame(clock);
-
+    //window.requestAnimationFrame(clock);
+    clock();
 
     var EventUtil = {
         addHandler : function (element, type, handler) {

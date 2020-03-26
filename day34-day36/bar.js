@@ -10,7 +10,7 @@ var r = 5,
 
 function getBar(data) {
     // 定义好柱状图绘制区域的高度，宽度，轴的高度，宽度
-
+console.log("执行了getBar");
 // 定义好每一个柱子的宽度及柱子的间隔宽度
     var barWidth = 32,
         interval = 9;
@@ -18,12 +18,14 @@ function getBar(data) {
     var barColor = "#0DAFF4",
         axisColor = "rgb(0,99,99)";
 // 拿到柱状图中的最大值Max，也可用下面的排序的方式得到最大值
-    var max = data[0];
+    var max = Math.max.apply(Math,data);
+    console.log(max);
+    /*var max = data[0];
     for (var i in data) {
         if (data[i] > max) {
             max = data[i];
         }
-    }
+    }*/
     //用排序的方式得到数组的最大值，,但这样使得data的顺序被改变了
     /*data.sort(function (a,b) {
         return a-b;
