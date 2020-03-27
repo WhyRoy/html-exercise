@@ -6,19 +6,22 @@
 </head>
 <body>
 <div id="mDiv">
-    <canvas id="myCanvas">
+    <canvas id="myCanvas1">
+        替换信息，默认不显示
+    </canvas>
+    <canvas id="myCanvas2">
         替换信息，默认不显示
     </canvas>
 </div>
 </body>
 <script>
     function draw() {
-        var canvas = document.querySelector('#myCanvas');
-        if (canvas.getContext){
-            var ctx = canvas.getContext('2d');
+        var canvas1 = document.querySelector('#myCanvas1');
+        if (canvas1.getContext){
+            var ctx = canvas1.getContext('2d');
             for (var i = 0; i < 6; i++) {
                 for (var j = 0; j < 6; j++) {
-                    ctx.fillStyle = 'rgb('+Math.floor(255-42.5*i)+','+Math.floor(255-42.5*j)+','+ 0 +')';
+                    ctx.fillStyle = 'rgb('+Math.floor(255-42.5*i)+','+Math.floor(255-42.5*j)+','+ 0 +0.1+')';
                     ctx.fillRect(j*25,i*25,25,25);
                 }
             }
