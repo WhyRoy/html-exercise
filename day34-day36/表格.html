@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkBox</title>
+    <script src="数据用例.js"></script>
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 50%;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+        #bar-wrapper{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="region-radio-wrapper"></div>
+<div id="product-radio-wrapper"></div>
+<div id="bar-wrapper">
+
+</div>
+<div id="bar-wrapper2">
+    <canvas>
+
+    </canvas>
+</div>
+
+<div id="table-wrapper"></div>
+</body>
+<script type="text/javascript" src="bar.js"></script>
+<script>
+    var regionGroup = document.querySelector('#region-radio-wrapper');
+    var productGroup = document.querySelector('#product-radio-wrapper');
+    var tableDiv = document.querySelector('#table-wrapper');
+
+    console.log(2/3);
+
+    //这个函数是为了生成复选框和选项内容，data在后面有定义，是一个数组，里面是对象
+    function checkBoxGroup(checkBoxName, data) {
+
+        var allSelect = document.createElement('input');
+        allSelect.setAttribute('type','checkbox');
+        allSelect.setAttribute('checkbox-type','all');//这个是用setAttribute自定义的一个属性
+        allSelect.setAttribute("value", "0");
+        var text = document.createTextNode("全选");
+        checkBoxName.appendChild(allSelect);
+        checkBoxName.appendChild(text);
+
+        for (var i = 0; i < data.length; i++) {
+            var singleSelect = document.createElement('input');
+            singleSelect.setAttribute('type','checkbox');
+            singleSelect.setAttribute("value", i + 1);
+            singleSelect.setAttribute('checkbox-type','single');
+            var singleText = document.createTextNode(data[i].text);
+            checkBoxName.appendChild(singleSelect);
+            checkBoxName.appendChild(singleText);
+        }
+        //目前就把选项建立好了
+
+        //接下来定义点击事件的规则
+        checkBoxName.onclick=function (event) {
+            var event = event || window.event;
+            var target = event.target || event.srcElement;
+            var len = checkBoxName.childNodes.length;
+            //console.log(len);
+            var checkBoxType = target.getAttribute('checkbox-type');
+            //console.log(checkBoxType);
+            var count = 0;//如果现在想不起来定义这个也没事，后面会讲为什么要定义这个
+            if (target.getAttribute("type") === 'checkbox') { //如果点击的是框，就有两种情况，一种是点击的全选框，一种是点击的单选框
+                if ( checkBoxType === 'all'){
+                    if (target.checked === true) {
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].tagName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = true;
+                                console.log(checkBoxName.childNodes[i]);
+                            }
+                        }
+                    }
+                    else{
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].nodeName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = false;
+                            }
+                        }
+                    }
+                }
+                //如果点击的是单选框，首先得数一遍有几个单选框被选了，这就需要定义一个count
+                if (checkBoxType === 'single') {
+
+                    for (var i = 2; i < len; i++) {
+                        if (checkBoxName.childNodes[i].checked === true) {
+                            count ++;
+                        }
+                    }
+                    if (count === len/2 - 1) {
+                        allSelect.checked = true;
+                    }
+                    else if (count < len / 2 - 1 && count > 0) {
+                        allSelect.checked = false;
+                    }
+                    else if (count === 0) {
+                        target.checked = true;
+                    }
+                }
+            }
+            createTable();//这里可以加函数。
+        }
+    }
+
+    // 对象或数组自己根据喜好实现均可
+    checkBoxGroup(regionGroup, [{
+        value: 1,
+        text: "华北"
+    }, {
+        value: 2,
+        text: "华南"
+    }, {
+        value: 3,
+        text: "华东"
+    }
+    ]);
+
+    checkBoxGroup(productGroup, [{
+        value: 1,
+        text: "手机"
+    }, {
+        value: 2,
+        text: "笔记本"
+    }, {
+        value: 3,
+        text: "智能音箱"
+    }
+    ]);
+
+    function getSelectData(checkBoxName) {
+        var len = checkBoxName.childNodes.length;
+        var arr1 = new Array();
+        for (var i = 2; i < len; i++) {
+            if (checkBoxName.childNodes[i].checked === true) {
+                arr1.push(checkBoxName. childNodes [i+1].textContent);//这里我用过innerText，死活不行，显示是undiffined。
+            }
+        }
+        console.log(arr1);
+        return arr1;
+    }
+    function getData() {
+        productArr = getSelectData(productGroup);
+
+        regionArr = getSelectData(regionGroup);
+
+        console.log(productArr);
+        console.log(regionArr);
+        var arr2 = new Array();
+        for (var i = 0; i < productArr.length; i++) {
+            for (var j = 0; j < regionArr.length; j++) {
+                for (var k = 0; k < sourceData.length; k++) {
+                    if (sourceData[k].product === productArr[i] && sourceData[k].region === regionArr[j]) {
+                        arr2.push(sourceData[k]);
+                    }
+                }
+            }
+        }
+        return arr2;
+    }
+
+    function createTable() {
+        if (tableDiv.childNodes[0]) {
+            tableDiv.removeChild(tableDiv.childNodes[0]);
+        }
+
+        table = document.createElement('table');
+        arr = getData();
+        console.log(arr)
+        productLen = productArr.length;
+        regionLen = regionArr.length;
+
+        if (productLen === 1 && regionLen >= 1) {
+            tableCase1();
+        }
+        else if(regionLen === 1 && productLen > 1){
+            tableCase2();
+        }
+        else if (regionLen > 1 && productLen > 1) {
+            tableCase3();
+        }
+        document.querySelector("#table-wrapper").appendChild(table);
+    }
+
+    function tableCase1() {
+
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+        console.log(arr.length);
+        for (var i = 0; i < arr.length; i++) {
+
+            if (i === 0) {
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].product;
+                td.rowSpan = arr.length;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+            }
+
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
+        }
+
+
+    }
+
+    function tableCase2() {
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < arr.length; i++) {
+            if (i === 0) {
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].region;
+                td.rowSpan = arr.length;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+            }
+
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
+        }
+
+    }
+
+    function tableCase3() {
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < productLen; i++) {
+            for (var z = 0; z < regionLen; z++) {
+                if (z === 0) {
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);
+                    td.innerHTML = arr[i * regionLen].product;
+                    td.rowSpan = regionLen;
+                    var td = tr.insertCell(1);
+                    td.innerHTML = arr[i * regionLen].region;
+
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 2);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
+                }
+                else {
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);//合并单元格后，后面行少一个单元格
+                    td.innerHTML = arr[z + i * regionLen].region;
+
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 1);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
+
+                }
+            }
+        }
+
+    }
+
+</script>
+<script>
+    var data=[];
+
+    document.querySelector('#table-wrapper').addEventListener('mouseover',function (e) {
+      var target = e.target;
+      if (target.nodeName.toLowerCase() === 'td') {
+          //if (target.textContent!=='地区'&&target.textContent!=='商品')
+          if (target.parentNode.firstChild.textContent!=='商品'){
+              //target.style.backgroundColor='orange';
+              //console.log(target.parentNode.cells[0]);
+              console.log(target.parentNode);
+              var product1 = target.parentNode.childNodes[0].textContent;
+              var region1 = target.parentNode.childNodes[1].textContent;
+              var product;
+              var region;
+              if (isNaN(region1)){
+                  region = region1;
+                  product = product1;
+                  console.log(region);
+              }
+              else{
+                  region = target.parentNode.childNodes[0].textContent;
+                  if (target.parentNode.rowIndex <= 3) {
+                      product = '手机';
+                      console.log(product);
+                  }
+                  else if (target.parentNode.rowIndex <= 6) {
+                      product = '笔记本'
+                  }
+                  else if (target.parentNode.rowIndex <= 9) {
+                      product = '智能音箱'
+                  }
+                  console.log(region);
+                  console.log(target.parentNode.rowIndex);
+              }
+
+              for (var i = 0; i < sourceData.length; i++) {
+                  if (sourceData[i].product === product && sourceData[i].region === region) {
+                      data = sourceData[i].sale;
+                      console.log(data);
+                      //getLine(data);
+
+                  }
+              }
+
+              var div = document.querySelector("#bar-wrapper");
+              div.innerHTML=getBar(data);
+
+              getLine(data);
+          }
+         else{
+             console.log('表头');
+          }
+      }
+    });
+
+</script>
+</html>
