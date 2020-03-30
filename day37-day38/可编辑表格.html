@@ -71,6 +71,7 @@
             //sourceData1 = localStorage.sourceData;
             sourceData1 = sourceData;
         }
+        getAllLine();
     };
 
     function populateStorage() {
@@ -129,6 +130,7 @@
         console.log(tab);
         localStorage.setItem('sourceData',JSON.stringify(tab));
         console.log(JSON.parse(localStorage.getItem('sourceData')));
+        updateLine;
     };
 
     function getTableContent() {
@@ -501,60 +503,61 @@
 
         }*/
     }
-    getAllLine();
-    document.querySelector('#table-wrapper').addEventListener('mouseover',function (e) {
-      var target = e.target;
-      if (target.nodeName.toLowerCase() === 'td') {
-          //if (target.textContent!=='地区'&&target.textContent!=='商品')
-          if (target.parentNode.firstChild.textContent!=='商品'){
-              //target.style.backgroundColor='orange';
-              //console.log(target.parentNode.cells[0]);
-              console.log(target.parentNode);
-              var product1 = target.parentNode.childNodes[0].textContent;
-              var region1 = target.parentNode.childNodes[1].textContent;
-              /*var product;
-              var region;
-              if (isNaN(region1)){
-                  region = region1;
-                  product = product1;
-                  console.log(region);
-              }*/
-              /*else{
-                  region = target.parentNode.childNodes[0].textContent;
-                  if (target.parentNode.rowIndex <= 3) {
-                      product = '手机';
-                      console.log(product);
-                  }
-                  else if (target.parentNode.rowIndex <= 6) {
-                      product = '笔记本'
-                  }
-                  else if (target.parentNode.rowIndex <= 9) {
-                      product = '智能音箱'
-                  }
-                  console.log(region);
-                  console.log(target.parentNode.rowIndex);
-              }*/
+
+    function updateLine(e){
+        var target = e.target;
+        if (target.nodeName.toLowerCase() === 'td'/*|| target.nodeName.toLowerCase()==='table'*/) {
+            //if (target.textContent!=='地区'&&target.textContent!=='商品')
+            if (target.parentNode.firstChild.textContent!=='商品'){
+                //target.style.backgroundColor='orange';
+                //console.log(target.parentNode.cells[0]);
+                console.log(target.parentNode);
+                var product1 = target.parentNode.childNodes[0].textContent;
+                var region1 = target.parentNode.childNodes[1].textContent;
+                /*var product;
+                var region;
+                if (isNaN(region1)){
+                    region = region1;
+                    product = product1;
+                    console.log(region);
+                }*/
+                /*else{
+                    region = target.parentNode.childNodes[0].textContent;
+                    if (target.parentNode.rowIndex <= 3) {
+                        product = '手机';
+                        console.log(product);
+                    }
+                    else if (target.parentNode.rowIndex <= 6) {
+                        product = '笔记本'
+                    }
+                    else if (target.parentNode.rowIndex <= 9) {
+                        product = '智能音箱'
+                    }
+                    console.log(region);
+                    console.log(target.parentNode.rowIndex);
+                }*/
                 //这里是从sourceData里取出来的，
-              //如果要用localStorage这里需要改
-              for (var i = 0; i < sourceData1.length; i++) {
-                  if (sourceData1[i].product === product1 && sourceData1[i].region === region1) {
-                      data = sourceData1[i].sale;
-                      console.log(data);
-                      //getLine(data);
+                //如果要用localStorage这里需要改
+                for (var i = 0; i < sourceData1.length; i++) {
+                    if (sourceData1[i].product === product1 && sourceData1[i].region === region1) {
+                        data = sourceData1[i].sale;
+                        console.log(data);
+                        //getLine(data);
 
-                  }
-              }
+                    }
+                }
 
-              var div = document.querySelector("#bar-wrapper");
-              div.innerHTML=getBar(data);
+                var div = document.querySelector("#bar-wrapper");
+                div.innerHTML=getBar(data);
 
-              getLine(data);
-          }
-         else{
-             console.log('表头');
-          }
-      }
-    });
+                getLine(data);
+            }
+            else{
+                console.log('表头');
+            }
+        }
+    }
+    document.querySelector('#table-wrapper').addEventListener('mouseover',updateLine);
 
 </script>
 </html>
