@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>checkBox</title>
-
+    <script src="数据用例.js"></script>
     <style>
         table {
             margin-top: 15px;
@@ -49,166 +49,13 @@
     </canvas>
 </div>
 </body>
-<script src="数据用例.js"></script>
 <script type="text/javascript" src="bar.js"></script>
 <script>
     var regionGroup = document.querySelector('#region-radio-wrapper');
     var productGroup = document.querySelector('#product-radio-wrapper');
     var tableDiv = document.querySelector('#table-wrapper');
-    var sourceData1 = [];
-    //console.log(2/3);
-    //sourceData1 = sourceData;
-    //getTableContent();
-    //以下为localStorage
-    if(localStorage) {
-        //populateStorage();
-        //sourceData1 = sourceData;
-        sourceData1 = JSON.parse(localStorage.getItem('sourceData'));
-    }
-    else {
-        //sourceData1 = localStorage.sourceData;
-        sourceData1 = sourceData;
-    }
-    function populateStorage() {
-        /*var mytable = tableDiv.childNodes[0];
-        console.log(mytable);*/
-        localStorage.setItem('sourceData',getTableContent);
 
-    }
-
-    // 将单元格转化成文本框
-    function changeTotext(obj)
-    {
-        var tdValue = obj.innerText;
-        obj.innerHTML = "";
-        var txt = document.createElement("input");
-        txt.type = "text";
-        txt.value = tdValue;
-        txt.id = "_text_000000000_";
-        txt.setAttribute("className","text");
-        obj.appendChild(txt);
-        txt.select();
-        //txt.onblur = cancel(txt);
-        //obj.style.border = "1px dashed #ff9900";
-    }
-    // 取消单元格中的文本框，并将文本框中的值赋给单元格
-    function cancel(obj)
-    {
-        var txtValue = document.getElementById("_text_000000000_").value;
-            console.log(typeof txtValue);
-            if (!isNaN(txtValue)) {
-                obj.innerText = txtValue;
-            }
-            else {
-                alert('输入不合法');
-            }
-    }
-    /*********************************************/
-    // 事件
-    document.ondblclick = function(e)
-    {
-        var target = e.target;
-        if (target.tagName.toLowerCase() === "td")
-        {
-            changeTotext(target);
-        }
-
-    };
-    tableDiv.onclick = function()
-    {
-        if (document.getElementById("_text_000000000_") )
-        {
-            var obj = document.getElementById("_text_000000000_").parentElement;
-            cancel(obj);
-        }
-        var tab = getTableContent();
-        console.log(tab);
-        localStorage.setItem('sourceData',JSON.stringify(tab));
-        console.log(JSON.parse(localStorage.getItem('sourceData')));
-    };
-
-    function getTableContent() {
-        var myTable = document.querySelector('table');
-        console.log(myTable);
-        var data = [];
-
-        for(var i=1,rows1=myTable.rows.length; i<rows1; i++){
-            var obj = {};
-            obj.product= '';
-            obj.region = '';
-            console.log(obj.product);
-            obj.sale = [];
-            console.log(myTable.rows[i]);
-            obj.product = myTable.rows[i].cells[0].innerText;
-            obj.region = myTable.rows[i].cells[1].innerText;
-            console.log(obj.product);
-            for (var j = 0; j < 12; j++) {
-                obj.sale[j] = myTable.rows[i].cells[j+2].innerText;
-            }
-            data.push(obj);
-            console.log(data);
-            /*if (i < 3) {
-                obj.product ="手机";
-                if (i === 0){
-                    obj.region = "华北";
-                    for (var j = 0; j < 11; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+2].innerText;
-                    }
-                    data.push(obj);
-                } else {
-                    obj.region = myTable.rows[i].cells[0].innerHTML;
-                    for (var j = 0; j < 10; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
-                    }
-                    data.push(obj);
-                }
-
-            }
-            else if (i<6) {
-                obj.product ="笔记本";
-                if (i === 3){
-                    obj.region = "华北";
-                    for (var j = 0; j < 10; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+2].innerHTML;
-                    }
-                    data.push(obj);
-                } else {
-                    obj.region = myTable.rows[i].cells[0].innerHTML;
-                    for (var j = 0; j < 10; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
-                    }
-                    data.push(obj);
-                }
-            }
-            else if (i<9) {
-                obj.product ="智能音箱";
-                if (i === 6){
-                    obj.region = "华北";
-                    for (var j = 0; j < 10; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+2].innerHTML;
-                    }
-                    data.push(obj);
-                } else {
-                    obj.region = myTable.rows[i].cells[0].innerHTML;
-                    for (var j = 0; j < 10; j++) {
-                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
-                    }
-                    data.push(obj);
-                }
-            }*/
-
-
-        }
-        //localStorage.setItem('sourceData',data);
-        return data;
-    }
-
-
-
-
-
-
-
+    console.log(2/3);
 
     //这个函数是为了生成复选框和选项内容，data在后面有定义，是一个数组，里面是对象
     function checkBoxGroup(checkBoxName, data) {
@@ -325,12 +172,12 @@
 
         console.log(productArr);
         console.log(regionArr);
-        var arr2 = [];
+        var arr2 = new Array();
         for (var i = 0; i < productArr.length; i++) {
             for (var j = 0; j < regionArr.length; j++) {
-                for (var k = 0; k < sourceData1.length; k++) {
-                    if (sourceData1[k].product === productArr[i] && sourceData1[k].region === regionArr[j]) {
-                        arr2.push(sourceData1[k]);
+                for (var k = 0; k < sourceData.length; k++) {
+                    if (sourceData[k].product === productArr[i] && sourceData[k].region === regionArr[j]) {
+                        arr2.push(sourceData[k]);
                     }
                 }
             }
@@ -345,24 +192,23 @@
 
         table = document.createElement('table');
         arr = getData();
-        console.log(arr);
+        console.log(arr)
         productLen = productArr.length;
         regionLen = regionArr.length;
 
-        /*if (productLen === 1 && regionLen >= 1) {
+        if (productLen === 1 && regionLen >= 1) {
             tableCase1();
         }
         else if(regionLen === 1 && productLen > 1){
             tableCase2();
         }
-        else if (regionLen > 1 && productLen > 1) {*/
+        else if (regionLen > 1 && productLen > 1) {
             tableCase3();
-        /*}*/
+        }
         document.querySelector("#table-wrapper").appendChild(table);
-        getTableContent();
     }
 
-    /*function tableCase1() {
+    function tableCase1() {
 
         var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
         var header = table.createTHead();
@@ -373,15 +219,29 @@
         }
         console.log(arr.length);
         for (var i = 0; i < arr.length; i++) {
+
+            if (i === 0) {
                 var tr = table.insertRow(table.rows.length);
                 var td = tr.insertCell(0);
                 td.innerHTML = arr[0].product;
+                td.rowSpan = arr.length;
                 var td = tr.insertCell(1);
                 td.innerHTML = arr[0].region;
                 for (var j = 0; j < 12; j++) {
                     var td = tr.insertCell(tr.cells.length);
                     td.innerHTML = arr[0].sale[j];
                 }
+            }
+
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
         }
 
 
@@ -397,22 +257,31 @@
         }
 
         for (var i = 0; i < arr.length; i++) {
-
+            if (i === 0) {
                 var tr = table.insertRow(table.rows.length);
                 var td = tr.insertCell(0);
                 td.innerHTML = arr[0].region;
-                //td.rowSpan = arr.length;
+                td.rowSpan = arr.length;
                 var td = tr.insertCell(1);
                 td.innerHTML = arr[0].product;
                 for (var j = 0; j < 12; j++) {
                     var td = tr.insertCell(tr.cells.length);
                     td.innerHTML = arr[0].sale[j];
                 }
+            }
 
-
+            else{
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[i].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[i].sale[j];
+                }
+            }
         }
 
-    }*/
+    }
 
     function tableCase3() {
         // 输出表头：商品、地区、1月、2月、…… 12月
@@ -426,20 +295,30 @@
 
         for (var i = 0; i < productLen; i++) {
             for (var z = 0; z < regionLen; z++) {
-
+                if (z === 0) {
                     var tr = table.insertRow(table.rows.length);
                     var td = tr.insertCell(0);
                     td.innerHTML = arr[i * regionLen].product;
-                    //td.rowSpan = regionLen;
+                    td.rowSpan = regionLen;
                     var td = tr.insertCell(1);
-                    td.innerHTML = arr[i * regionLen+z].region;
+                    td.innerHTML = arr[i * regionLen].region;
 
                     for (var j = 0; j < 12; j++) {
                         var td = tr.insertCell(j + 2);
                         td.innerHTML = arr[z + i * regionLen].sale[j];
                     }
+                }
+                else {
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);//合并单元格后，后面行少一个单元格
+                    td.innerHTML = arr[z + i * regionLen].region;
 
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 1);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
 
+                }
             }
         }
 
@@ -473,8 +352,8 @@
             ctx.lineTo(0,600);
             ctx.lineTo(5,595);
             ctx.stroke();
-            for (var i = 0; i < sourceData1.length; i++) {
-                data = sourceData1[i].sale;
+            for (var i = 0; i < sourceData.length; i++) {
+                data = sourceData[i].sale;
 
                 ctx.beginPath();
                 ctx.moveTo(15,data[0]);
@@ -508,14 +387,14 @@
               console.log(target.parentNode);
               var product1 = target.parentNode.childNodes[0].textContent;
               var region1 = target.parentNode.childNodes[1].textContent;
-              /*var product;
+              var product;
               var region;
               if (isNaN(region1)){
                   region = region1;
                   product = product1;
                   console.log(region);
-              }*/
-              /*else{
+              }
+              else{
                   region = target.parentNode.childNodes[0].textContent;
                   if (target.parentNode.rowIndex <= 3) {
                       product = '手机';
@@ -529,12 +408,11 @@
                   }
                   console.log(region);
                   console.log(target.parentNode.rowIndex);
-              }*/
-                //这里是从sourceData里取出来的，
-              //如果要用localStorage这里需要改
-              for (var i = 0; i < sourceData1.length; i++) {
-                  if (sourceData1[i].product === product1 && sourceData1[i].region === region1) {
-                      data = sourceData1[i].sale;
+              }
+
+              for (var i = 0; i < sourceData.length; i++) {
+                  if (sourceData[i].product === product && sourceData[i].region === region) {
+                      data = sourceData[i].sale;
                       console.log(data);
                       //getLine(data);
 

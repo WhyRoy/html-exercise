@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画布</title>
+</head>
+<body>
+<div>
+    <canvas width="1800" height="900">
+
+    </canvas>
+</div>
+</body>
+<script>
+    var canvas = document.querySelector('canvas');
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+
+        //矩形
+        ctx.fillStyle = 'rgba(135,206,250,0.5)';
+        ctx.fillRect(0,0,1800,900);
+
+        //路径
+        ctx.beginPath();
+        ctx.moveTo(450,225);
+        ctx.lineTo(450,300);
+        ctx.lineTo(700,300);
+        ctx.closePath();
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+
+        //绘制笑脸，来联系圆
+        ctx.beginPath();
+        ctx.moveTo(275,200);//把点移动到圆要开始的地方
+        ctx.arc(200,200,75,0,Math.PI*2,false);//默认false，代表顺时针
+        //这样画出来的圆有线，要把点移动要下个路径开始的位置
+        ctx.moveTo(255,200);
+        ctx.arc(200,200,55,0,Math.PI,false);
+        ctx.moveTo(175,180);
+        ctx.arc(170,180,5,0,Math.PI*2,false);
+        ctx.moveTo(235,180);
+        ctx.arc(230,180,5,0,Math.PI*2,false);
+        ctx.moveTo(0,0);
+        ctx.stroke();
+
+        //画直线
+        ctx.fillStyle = 'rgba(220,20,60,0.5)';
+        ctx.beginPath();
+        ctx.moveTo(25,25);
+        ctx.lineTo(105,25);
+        //ctx.lineTo(125,45);
+        ctx.lineTo(25,105);
+        ctx.fill();
+
+        //贝塞尔曲线先不学了
+
+        //fillStyle里面只写颜色
+        // 这些 fillStyle 的值均为 '橙色',收藏夹里有相应的转换器
+        ctx.fillStyle = "orange";
+        ctx.fillStyle = "#FFA500";
+        ctx.fillStyle = "rgb(255,165,0)";
+        ctx.fillStyle = "rgba(255,165,0,1)";
+
+        //以下是一个渐变填充
+        for (var i=0;i<6;i++){
+            for (var j=0;j<6;j++){
+                ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
+                    Math.floor(255-42.5*j) + ',0)';
+                ctx.fillRect((j+50)*25,(i+5)*25,25,25);
+            }
+        }
+
+        //透明度用rgba
+        // 指定透明颜色，用于描边和填充样式
+        ctx.strokeStyle = "rgba(255,0,0,0.5)";
+        ctx.fillStyle = "rgba(255,0,0,0.5)";
+
+        //线型line styles
+
+        //lineWidth控制线宽
+        //lineCap控制线的末端形状，有butt（默认）、round、square。
+        //lineJoin控制线连接处的样子round、bevel、miter
+
+        //渐变先不学了
+
+        //使用图片
+        var img = new Image();   // 创建img元素
+        img.onload = function(){
+            // 执行drawImage语句
+            //ctx.drawImage(img,500,0);//这样图片将是完整的尺寸，必须要设置缩放scale
+            ctx.drawImage(img,500,0,100,70);//这样，后面的两个参数是你希望图片的宽和高
+            //还可以对图片进行切片，
+            ctx.drawImage(img,400,20,400,400,0,500,400,400);
+        };
+        img.src = '260940.jpg'; // 设置图片源地址
+
+        //变形Transformations
+
+        //状态的保存或恢复saving and restoring
+        //saving()和restore()就是入栈和出栈
+
+        //移动Translate
+        //translate(x,y)
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                ctx.save();
+                ctx.fillStyle = 'rgb('+ 52*i +','+(255-52*i)+',255)';
+                ctx.translate(10+j*50,10+i*50);
+                ctx.fillRect(0,0,25,25);
+                ctx.restore();
+            }
+        }
+
+        //旋转Rotating，以原点为中心旋转，rotate(angle),默认顺时针
+
+        //缩放Scaling，scale(x,y)，x是水平缩放因子，y是垂直缩放因子,大于一放大，小于一缩小
+        //如果想得到笛卡尔坐标系，可以这样：
+        //先移动原点：translate(0,canvas.height)
+        //再把y轴向负方向缩放一倍：scale(1,-1)
+
+        //变形Transform先不学了
+
+        //裁切路径，只有路径里面的才会显示出来
+        //除了fill和stroke，还有这个clip，先画图形或路径，然后使用clip。
+
+        //循环全景图
+        var img = new Image();
+
+// User Variables - customize these to change the image being scrolled, its
+// direction, and the speed.
+
+        img.src = 'https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg';
+        var CanvasXSize = 800;
+        var CanvasYSize = 200;
+        var speed = 30; //lower is faster
+        var scale = 1.05;
+        var y = -4.5; //vertical offset
+
+// Main program
+
+        var dx = 0.75;
+        var imgW;
+        var imgH;
+        var x = 0;
+        var clearX;
+        var clearY;
+        //var ctx;
+
+        img.onload = function() {
+            imgW = img.width*scale;
+            imgH = img.height*scale;
+            if (imgW > CanvasXSize) { x = CanvasXSize-imgW; } // image larger than canvas
+            if (imgW > CanvasXSize) { clearX = imgW; } // image larger than canvas
+            else { clearX = CanvasXSize; }
+            if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
+            else { clearY = CanvasYSize; }
+            //Get Canvas Element
+            //ctx = document.getElementById('canvas').getContext('2d');
+            //Set Refresh Rate
+            return setInterval(draw, speed);
+        };
+
+        function draw() {
+            //Clear Canvas
+            ctx.clearRect(0,0,clearX,clearY);
+            //If image is <= Canvas Size
+            if (imgW <= CanvasXSize) {
+                //reset, start from beginning
+                if (x > (CanvasXSize)) { x = 0; }
+                //draw aditional image
+                if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-CanvasXSize+1,y,imgW,imgH); }
+            }
+            //If image is > Canvas Size
+            else {
+                //reset, start from beginning
+                if (x > (CanvasXSize)) { x = CanvasXSize-imgW; }
+                //draw aditional image
+                if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-imgW+1,y,imgW,imgH); }
+            }
+            //draw image
+            ctx.drawImage(img,x,y,imgW,imgH);
+            //amount to move
+            x += dx;
+        }
+
+
+    }
+</script>
+</html>

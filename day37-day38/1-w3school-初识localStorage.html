@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wed</title>
+</head>
+<body>
+<p>刷新页面会看到计数器在增长。</p>
+
+<p>请关闭浏览器窗口，然后再试一次，计数器会继续计数。</p>
+</body>
+<script>
+    if (localStorage.pagecount)
+    {
+        localStorage.pagecount=Number(localStorage.pagecount) +1;
+    }
+    else
+    {
+        localStorage.pagecount=1;
+    }
+    document.write("Visits: " + localStorage.pagecount + " time(s).");
+</script>
+</html>
