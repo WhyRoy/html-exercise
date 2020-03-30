@@ -60,15 +60,19 @@
     //sourceData1 = sourceData;
     //getTableContent();
     //以下为localStorage
-    if(localStorage) {
-        //populateStorage();
-        //sourceData1 = sourceData;
-        sourceData1 = JSON.parse(localStorage.getItem('sourceData'));
-    }
-    else {
-        //sourceData1 = localStorage.sourceData;
-        sourceData1 = sourceData;
-    }
+    window.onload = function () {
+        //localStorage.clear();
+        if(localStorage.getItem('sourceData')) {
+            //populateStorage();
+            //sourceData1 = sourceData;
+            sourceData1 = JSON.parse(localStorage.getItem('sourceData'));
+        }
+        else {
+            //sourceData1 = localStorage.sourceData;
+            sourceData1 = sourceData;
+        }
+    };
+
     function populateStorage() {
         /*var mytable = tableDiv.childNodes[0];
         console.log(mytable);*/
