@@ -5,6 +5,33 @@
     <title>task1</title>
 </head>
 <body>
-
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
 </body>
+<script>
+    document.querySelector('body').addEventListener('click',function (e) {
+        var target = e.target;
+        if (target.nodeName.toLowerCase()==='button'){
+            location.hash = target.innerHTML;
+
+            console.log(location.hash);
+        }
+    });
+    window.onhashchange = hashToDiv;
+    hashToDiv();
+
+    function fixHash() {
+        var temp = location.hash;
+        return temp ? temp.slice(1):null;
+        //console.log(temp);
+    }
+    function hashToDiv() {
+        var str = fixHash();
+        var div = document.querySelector('#cont');
+        div.innerHTML = str;
+    }
+
+</script>
 </html>
