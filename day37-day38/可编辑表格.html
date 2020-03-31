@@ -65,7 +65,11 @@
         if(localStorage.getItem('sourceData')) {
             //populateStorage();
             //sourceData1 = sourceData;
+
             sourceData1 = JSON.parse(localStorage.getItem('sourceData'));
+            if (sourceData1.length < 9){
+                sourceData1 =sourceData
+            }
         }
         else {
             //sourceData1 = localStorage.sourceData;
@@ -130,7 +134,7 @@
         console.log(tab);
         localStorage.setItem('sourceData',JSON.stringify(tab));
         console.log(JSON.parse(localStorage.getItem('sourceData')));
-        updateLine;
+        //updateLine;
     };
 
     function getTableContent() {
