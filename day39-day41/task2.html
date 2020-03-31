@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+
+<button id="d">D</button>
+<button id="e">E</button>
+<button id="f">F</button>
+
+<div id="contABC"></div>
+<div id="contDEF"></div>
+</body>
+<script>
+    document.querySelector('body').addEventListener('click',function (e) {
+        var target = e.target;
+        //如果不先赋值，总是有一个是undefined
+        var hashABC='contABC=',
+            hashDEF='contDEF=',
+            //hash = "contABC=&contDEF=";
+            hash = location.hash || "contABC=&contDEF=";
+
+        if (target.nodeName.toLowerCase()==='button'){
+            //if (target.getAttribute('id')==='a'|||)
+            var child = target;
+            var i = 0;
+            while((child = child.previousSibling) != null) i++;
+            console.log(i); //console 1
+            if (i < 6) {
+                hashABC += target.innerHTML;
+                console.log(hashABC)
+            }
+            else {
+                hashDEF += target.innerHTML;
+            }
+            hash = hash.split('&');
+            //这两个if可以确保：点了另一组，另一组的值是正确的。如果没点另一组，另一组保持最开始赋的值
+            if (hashABC!=='contABC=') {//等于8相当于没点abc里面的任何一个，这时候默认情况值是undefined，我们要更改它
+                hash[0] = hashABC;
+            }
+            if (hashDEF!=='contDEF=') {//等于8相当于没点def里面的任何一个，这时候默认情况值是undefined，我们要更改它
+                hash[1] = hashDEF;
+            }
+
+            hash = hash.join('&');
+            location.hash = hash;
+            //hash += hashABC+'&'+hashDEF;
+
+            console.log(location.hash);
+        }
+    });
+    window.onhashchange = hashToDiv;
+    hashToDiv();
+
+    function fixHash() {
+        var temp = location.hash;
+        var obj = {};
+        if (!temp) {
+            return null;
+        }
+        else {
+            temp = temp.slice(1);
+            temp = temp.split('&');
+            //又来问题了，我如何返回两个值。不如把两个值都返回到一个对象里。
+            for (var i = 0 , len = temp.length; i < len; i++) {
+                var p = temp[i].split('=');
+                obj[p[0]] = p[1]; //因为分了两组，所以obj有两个属性,这里必须用中括号
+            }
+            return obj;
+        }
+        //return temp ? temp.slice(1):null;
+        //console.log(temp);
+    }
+    function hashToDiv() {
+        var obj = fixHash();
+        var div1 = document.querySelector('#contABC');
+        var div2 = document.querySelector('#contDEF');
+        if (obj.contABC) {
+            div1.innerHTML = obj.contABC;
+        }
+        if (obj.contDEF) {
+            div2.innerHTML = obj.contDEF;
+        }
+
+    }
+
+</script>
+</html>
