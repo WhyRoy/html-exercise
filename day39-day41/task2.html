@@ -24,6 +24,7 @@
             hashDEF='contDEF=',
             //hash = "contABC=&contDEF=";
             hash = location.hash || "contABC=&contDEF=";
+        //逻辑或 | | 运算也属于短路运算，在按从左向右的运算顺序运算时，只有第一个操作数为假，才进行第二个操作数，返回停止运算一侧的值，
 
         if (target.nodeName.toLowerCase()==='button'){
             //if (target.getAttribute('id')==='a'|||)
@@ -64,12 +65,12 @@
             return null;
         }
         else {
-            temp = temp.slice(1);
+            temp = temp.slice(1);//去除#号
             temp = temp.split('&');
             //又来问题了，我如何返回两个值。不如把两个值都返回到一个对象里。
             for (var i = 0 , len = temp.length; i < len; i++) {
                 var p = temp[i].split('=');
-                obj[p[0]] = p[1]; //因为分了两组，所以obj有两个属性,这里必须用中括号
+                obj[p[0]] = p[1]; //因为分了两组，所以obj有两个属性,这里必须用中括号，才能将数组里的内容作为一个对象的某个属性
             }
             return obj;
         }

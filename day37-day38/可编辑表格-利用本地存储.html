@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkBox</title>
+
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 50%;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+        #bar-wrapper{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="radio-wrapper">
+    <div id="region-radio-wrapper"></div>
+    <div id="product-radio-wrapper"></div>
+</div>
+
+<div id="bar-wrapper">
+
+</div>
+<div id="bar-wrapper2">
+    <canvas id="canvas1">
+
+    </canvas>
+</div>
+<div id="table-wrapper"></div>
+<div >
+    <canvas id="canvas2">
+
+    </canvas>
+</div>
+</body>
+<script src="../day34-day36/数据用例.js"></script>
+<script type="text/javascript" src="../day34-day36/bar.js"></script>
+<script>
+    var regionGroup = document.querySelector('#region-radio-wrapper');
+    var productGroup = document.querySelector('#product-radio-wrapper');
+    var tableDiv = document.querySelector('#table-wrapper');
+    var sourceData1 = [];
+    //console.log(2/3);
+    //sourceData1 = sourceData;
+    //getTableContent();
+    //以下为localStorage
+    window.onload = function () {
+        //console.log(location.hash);
+        //localStorage.clear();
+        if(localStorage.getItem('sourceData')) {
+            //populateStorage();
+            //sourceData1 = sourceData;
+
+            sourceData1 = JSON.parse(localStorage.getItem('sourceData'));
+            if (sourceData1.length < 9){
+                sourceData1 =sourceData
+            }
+        }
+        else {
+            //sourceData1 = localStorage.sourceData;
+            sourceData1 = sourceData;
+        }
+        getAllLine();
+        /*setLoactionHashAccordingToCheckbox();
+        changeCheckboxValueAccordingToHashState()*/
+    };
+    /*window.addEventListener('hashchange',setLoactionHashAccordingToCheckbox);
+    window.addEventListener('hashchange',changeCheckboxValueAccordingToHashState);*/
+
+    function populateStorage() {
+        /*var mytable = tableDiv.childNodes[0];
+        console.log(mytable);*/
+        localStorage.setItem('sourceData',getTableContent);
+
+    }
+
+    // 将单元格转化成文本框
+    function changeTotext(obj)
+    {
+        var tdValue = obj.innerText;
+        obj.innerHTML = "";
+        var txt = document.createElement("input");
+        txt.type = "text";
+        txt.value = tdValue;
+        txt.id = "_text_000000000_";
+        txt.setAttribute("className","text");
+        obj.appendChild(txt);
+        txt.select();
+        //txt.onblur = cancel(txt);
+        //obj.style.border = "1px dashed #ff9900";
+    }
+    // 取消单元格中的文本框，并将文本框中的值赋给单元格
+    function cancel(obj)
+    {
+        var txtValue = document.getElementById("_text_000000000_").value;
+            console.log(typeof txtValue);
+            if (!isNaN(txtValue)) {
+                obj.innerText = txtValue;
+            }
+            else {
+                alert('输入不合法');
+            }
+    }
+    /*********************************************/
+    // 事件
+    document.ondblclick = function(e)
+    {
+        var target = e.target;
+        if (target.tagName.toLowerCase() === "td")
+        {
+            changeTotext(target);
+        }
+
+    };
+    tableDiv.onclick = function()
+    {
+        if (document.getElementById("_text_000000000_") )
+        {
+            var obj = document.getElementById("_text_000000000_").parentElement;
+            cancel(obj);
+        }
+        var tab = getTableContent();
+        console.log(tab);
+        localStorage.setItem('sourceData',JSON.stringify(tab));
+        console.log(JSON.parse(localStorage.getItem('sourceData')));
+        //updateLine;
+    };
+
+    function getTableContent() {
+        var myTable = document.querySelector('table');
+        console.log(myTable);
+        var data = [];
+
+        for(var i=1,rows1=myTable.rows.length; i<rows1; i++){
+            var obj = {};
+            obj.product= '';
+            obj.region = '';
+            console.log(obj.product);
+            obj.sale = [];
+            console.log(myTable.rows[i]);
+            obj.product = myTable.rows[i].cells[0].innerText;
+            obj.region = myTable.rows[i].cells[1].innerText;
+            console.log(obj.product);
+            for (var j = 0; j < 12; j++) {
+                obj.sale[j] = myTable.rows[i].cells[j+2].innerText;
+            }
+            data.push(obj);
+            console.log(data);
+            /*if (i < 3) {
+                obj.product ="手机";
+                if (i === 0){
+                    obj.region = "华北";
+                    for (var j = 0; j < 11; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+2].innerText;
+                    }
+                    data.push(obj);
+                } else {
+                    obj.region = myTable.rows[i].cells[0].innerHTML;
+                    for (var j = 0; j < 10; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
+                    }
+                    data.push(obj);
+                }
+
+            }
+            else if (i<6) {
+                obj.product ="笔记本";
+                if (i === 3){
+                    obj.region = "华北";
+                    for (var j = 0; j < 10; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+2].innerHTML;
+                    }
+                    data.push(obj);
+                } else {
+                    obj.region = myTable.rows[i].cells[0].innerHTML;
+                    for (var j = 0; j < 10; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
+                    }
+                    data.push(obj);
+                }
+            }
+            else if (i<9) {
+                obj.product ="智能音箱";
+                if (i === 6){
+                    obj.region = "华北";
+                    for (var j = 0; j < 10; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+2].innerHTML;
+                    }
+                    data.push(obj);
+                } else {
+                    obj.region = myTable.rows[i].cells[0].innerHTML;
+                    for (var j = 0; j < 10; j++) {
+                        obj.sale[j] = myTable.rows[i].cells[j+1].innerHTML;
+                    }
+                    data.push(obj);
+                }
+            }*/
+
+
+        }
+        //localStorage.setItem('sourceData',data);
+        return data;
+    }
+
+    // 为checkbox添加时间，根据选择项设置location hash
+    function setLoactionHashAccordingToCheckbox() {
+        var selectedRegionItems = getSelectData(regionGroup),
+            selectedProductItems = getSelectData(productGroup),
+            hash = location.hash || "region=&product=",
+            regionHash = "region=",
+            productHash = "product=";
+
+        if (selectedRegionItems.length === 0 || selectedProductItems.length === 0) {
+            return ;
+        }
+        regionHash += selectedRegionItems.join("+");
+        productHash += selectedProductItems.join("+");
+        hash = hash.split("&");
+        if (regionHash.length !== 7) {
+            hash[0] = regionHash;
+        }
+        if (productHash.length !== 8) {
+            hash[1] = productHash;
+        }
+        location.hash = hash.join("&");
+        console.log(location.hash);
+        console.log(decodeURIComponent(location.hash));
+
+        //history.pushState(null, "", "#"+hash.join("&"));     //利用pushState，题目要求应该不是这样简单，捂脸...
+    }
+    //document.querySelector("#radio-wrapper").addEventListener("change", setLoactionHashAccordingToCheckbox, false);
+
+    // 为window添加事件，页面加载完毕后，根据location.hash值勾选checkbox
+    function changeCheckboxValueAccordingToHashState() {
+        var hash = decodeURIComponent(location.hash).slice(1).split("&"),
+            regionState = hash[0].slice(hash[0].indexOf("=")+1),
+            productState = hash[1].slice(hash[1].indexOf("=")+1);
+
+        if (regionState.length === 0 || productState.length === 0) {
+            return ;
+        }
+        regionState = regionState.split("+");
+        productState = productState.split("+");
+
+        var regionCheckboxs = document.querySelectorAll("#region-radio-wrapper input[checkbox-type='single']"),
+            productCheckboxs = document.querySelectorAll("#product-radio-wrapper input[checkbox-type='single']"),
+            regionAllCheckboxs = document.querySelector("#region-radio-wrapper input[checkbox-type='all']"),
+            productAllCheckboxs = document.querySelector("#product-radio-wrapper input[checkbox-type='all']"),
+            i;
+
+        // 当hash中选定值为3个时，勾上全选
+        // 处理不妥，合理的情况下，应该是checkbox组绑定的事件处理全选与否
+        // 因为checkbox组绑定的是click事件，通过js设置checked状态，并不会触发
+        // 此处是偷懒行为，因为我不想重构了
+        if (regionState.length === 3) {
+            regionAllCheckboxs.checked = true;
+        }
+        if (productState.length === 3) {
+            productAllCheckboxs.checked = true;
+        }
+        for (i = 0; i < regionState.length; i++) {
+            if (regionState[i] === "华东") {
+                regionCheckboxs[0].checked = true;
+            }
+            if (regionState[i] === "华南") {
+                regionCheckboxs[1].checked = true;
+            }
+            if (regionState[i] === "华北") {
+                regionCheckboxs[2].checked = true;
+            }
+        }
+        for (i = 0; i < productState.length; i++) {
+            if (productState[i] === "手机") {
+                productCheckboxs[0].checked = true;
+            }
+            if (productState[i] === "笔记本") {
+                productCheckboxs[1].checked = true;
+            }
+            if (productState[i] === "智能音箱") {
+                productCheckboxs[2].checked = true;
+            }
+        }
+        createTable();
+    }
+
+
+
+
+
+    //这个函数是为了生成复选框和选项内容，data在后面有定义，是一个数组，里面是对象
+    function checkBoxGroup(checkBoxName, data) {
+
+        var allSelect = document.createElement('input');
+        allSelect.setAttribute('type','checkbox');
+        allSelect.setAttribute('checkbox-type','all');//这个是用setAttribute自定义的一个属性
+        allSelect.setAttribute("value", "0");
+        var text = document.createTextNode("全选");
+        checkBoxName.appendChild(allSelect);
+        checkBoxName.appendChild(text);
+
+        for (var i = 0; i < data.length; i++) {
+            var singleSelect = document.createElement('input');
+            singleSelect.setAttribute('type','checkbox');
+            singleSelect.setAttribute("value", i + 1);
+            singleSelect.setAttribute('checkbox-type','single');
+            var singleText = document.createTextNode(data[i].text);
+            checkBoxName.appendChild(singleSelect);
+            checkBoxName.appendChild(singleText);
+        }
+        //目前就把选项建立好了
+
+        //接下来定义点击事件的规则
+        checkBoxName.onclick=function (event) {
+            var event = event || window.event;
+            var target = event.target || event.srcElement;
+            var len = checkBoxName.childNodes.length;
+            //console.log(len);
+            var checkBoxType = target.getAttribute('checkbox-type');
+            //console.log(checkBoxType);
+            var count = 0;//如果现在想不起来定义这个也没事，后面会讲为什么要定义这个
+            if (target.getAttribute("type") === 'checkbox') { //如果点击的是框，就有两种情况，一种是点击的全选框，一种是点击的单选框
+                if ( checkBoxType === 'all'){
+                    if (target.checked === true) {
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].tagName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = true;
+                                console.log(checkBoxName.childNodes[i]);
+                            }
+                        }
+                    }
+                    else{
+                        for (var i = 2; i < len; i++) {
+                            if (checkBoxName.childNodes[i].nodeName === 'INPUT') {
+                                checkBoxName.childNodes[i].checked = false;
+                            }
+                        }
+                    }
+                }
+                //如果点击的是单选框，首先得数一遍有几个单选框被选了，这就需要定义一个count
+                if (checkBoxType === 'single') {
+
+                    for (var i = 2; i < len; i++) {
+                        if (checkBoxName.childNodes[i].checked === true) {
+                            count ++;
+                        }
+                    }
+                    if (count === len/2 - 1) {
+                        allSelect.checked = true;
+                    }
+                    else if (count < len / 2 - 1 && count > 0) {
+                        allSelect.checked = false;
+                    }
+                    else if (count === 0) {
+                        target.checked = true;
+                    }
+                }
+            }
+            createTable();//这里可以加函数。
+        }
+    }
+
+    // 对象或数组自己根据喜好实现均可
+    checkBoxGroup(regionGroup, [{
+        value: 1,
+        text: "华北"
+    }, {
+        value: 2,
+        text: "华南"
+    }, {
+        value: 3,
+        text: "华东"
+    }
+    ]);
+
+    checkBoxGroup(productGroup, [{
+        value: 1,
+        text: "手机"
+    }, {
+        value: 2,
+        text: "笔记本"
+    }, {
+        value: 3,
+        text: "智能音箱"
+    }
+    ]);
+
+    function getSelectData(checkBoxName) {
+        var len = checkBoxName.childNodes.length;
+        var arr1 = [];
+        for (var i = 2; i < len; i++) {
+            if (checkBoxName.childNodes[i].checked === true) {
+                arr1.push(checkBoxName. childNodes [i+1].textContent);//这里我用过innerText，死活不行，显示是undiffined。
+            }
+        }
+        console.log(arr1);
+        return arr1;
+    }
+    function getData() {
+        productArr = getSelectData(productGroup);
+
+        regionArr = getSelectData(regionGroup);
+
+        console.log(productArr);
+        console.log(regionArr);
+        var arr2 = [];
+        for (var i = 0; i < productArr.length; i++) {
+            for (var j = 0; j < regionArr.length; j++) {
+                for (var k = 0; k < sourceData1.length; k++) {
+                    if (sourceData1[k].product === productArr[i] && sourceData1[k].region === regionArr[j]) {
+                        arr2.push(sourceData1[k]);
+                    }
+                }
+            }
+        }
+        return arr2;
+    }
+
+    function createTable() {
+        if (tableDiv.childNodes[0]) {
+            tableDiv.removeChild(tableDiv.childNodes[0]);
+        }
+
+        table = document.createElement('table');
+        arr = getData();
+        console.log(arr);
+        productLen = productArr.length;
+        regionLen = regionArr.length;
+
+        /*if (productLen === 1 && regionLen >= 1) {
+            tableCase1();
+        }
+        else if(regionLen === 1 && productLen > 1){
+            tableCase2();
+        }
+        else if (regionLen > 1 && productLen > 1) {*/
+            tableCase3();
+        /*}*/
+        document.querySelector("#table-wrapper").appendChild(table);
+        getTableContent();
+    }
+
+    /*function tableCase1() {
+
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+        console.log(arr.length);
+        for (var i = 0; i < arr.length; i++) {
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].product;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].region;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+        }
+
+
+    }
+
+    function tableCase2() {
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < arr.length; i++) {
+
+                var tr = table.insertRow(table.rows.length);
+                var td = tr.insertCell(0);
+                td.innerHTML = arr[0].region;
+                //td.rowSpan = arr.length;
+                var td = tr.insertCell(1);
+                td.innerHTML = arr[0].product;
+                for (var j = 0; j < 12; j++) {
+                    var td = tr.insertCell(tr.cells.length);
+                    td.innerHTML = arr[0].sale[j];
+                }
+
+
+        }
+
+    }*/
+
+    function tableCase3() {
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0 = header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        for (var i = 0; i < productLen; i++) {
+            for (var z = 0; z < regionLen; z++) {
+
+                    var tr = table.insertRow(table.rows.length);
+                    var td = tr.insertCell(0);
+                    td.innerHTML = arr[i * regionLen].product;
+                    //td.rowSpan = regionLen;
+                    var td = tr.insertCell(1);
+                    td.innerHTML = arr[i * regionLen+z].region;
+
+                    for (var j = 0; j < 12; j++) {
+                        var td = tr.insertCell(j + 2);
+                        td.innerHTML = arr[z + i * regionLen].sale[j];
+                    }
+
+
+            }
+        }
+
+    }
+
+</script>
+<script>
+    var data=[];
+
+    function getAllLine() {
+        var canvas = document.querySelector('#canvas2');
+        canvas.setAttribute('width','900');
+        canvas.setAttribute('height','900');
+        var interval =40;
+        if (canvas.getContext){
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle='orange';
+            ctx.strokeStyle='black';
+            //ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.translate(0,canvas.height);
+            ctx.scale(1,-1);
+            /*ctx.fillStyle = 'blue';
+            ctx.fillRect(0,0,100,100);*/
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(900,0);
+            ctx.lineTo(895,5);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(0,600);
+            ctx.lineTo(5,595);
+            ctx.stroke();
+            for (var i = 0; i < sourceData1.length; i++) {
+                data = sourceData1[i].sale;
+
+                ctx.beginPath();
+                ctx.moveTo(15,data[0]);
+                for (var j = 0; j < data.length; j++) {
+                    var x = 15+ interval *j;
+                    var y = data[j];
+                    ctx.lineTo(x,y);
+                    ctx.arc(x,y,r/2,0,Math.PI*2,false);
+                    //ctx.strokeStyle= lColor;
+                    ctx.strokeStyle = 'rgb('+12*i+',' + Math.floor(255-28*i) + ',' +
+                        Math.floor(255-12*j) + ')';
+                    //ctx.strokeStyle = 'rgb(' + Math.floor(155-42.5*i) + ',' + Math.floor(155-42.5*j) + ',0)';
+                    ctx.stroke()
+
+                }
+
+            }
+        }
+        /*
+
+        }*/
+    }
+
+    function updateLine(e){
+        var target = e.target;
+        if (target.nodeName.toLowerCase() === 'td'/*|| target.nodeName.toLowerCase()==='table'*/) {
+            //if (target.textContent!=='地区'&&target.textContent!=='商品')
+            if (target.parentNode.firstChild.textContent!=='商品'){
+                //target.style.backgroundColor='orange';
+                //console.log(target.parentNode.cells[0]);
+                console.log(target.parentNode);
+                var product1 = target.parentNode.childNodes[0].textContent;
+                var region1 = target.parentNode.childNodes[1].textContent;
+                /*var product;
+                var region;
+                if (isNaN(region1)){
+                    region = region1;
+                    product = product1;
+                    console.log(region);
+                }*/
+                /*else{
+                    region = target.parentNode.childNodes[0].textContent;
+                    if (target.parentNode.rowIndex <= 3) {
+                        product = '手机';
+                        console.log(product);
+                    }
+                    else if (target.parentNode.rowIndex <= 6) {
+                        product = '笔记本'
+                    }
+                    else if (target.parentNode.rowIndex <= 9) {
+                        product = '智能音箱'
+                    }
+                    console.log(region);
+                    console.log(target.parentNode.rowIndex);
+                }*/
+                //这里是从sourceData里取出来的，
+                //如果要用localStorage这里需要改
+                for (var i = 0; i < sourceData1.length; i++) {
+                    if (sourceData1[i].product === product1 && sourceData1[i].region === region1) {
+                        data = sourceData1[i].sale;
+                        console.log(data);
+                        //getLine(data);
+
+                    }
+                }
+
+                var div = document.querySelector("#bar-wrapper");
+                div.innerHTML=getBar(data);
+
+                getLine(data);
+            }
+            else{
+                console.log('表头');
+            }
+        }
+    }
+    document.querySelector('#table-wrapper').addEventListener('mouseover',updateLine);
+
+</script>
+</html>

@@ -32,8 +32,11 @@
     </style>
 </head>
 <body>
-<div id="region-radio-wrapper"></div>
-<div id="product-radio-wrapper"></div>
+<div id="radio-wrapper">
+    <div id="region-radio-wrapper"></div>
+    <div id="product-radio-wrapper"></div>
+</div>
+
 <div id="bar-wrapper">
 
 </div>
@@ -56,11 +59,14 @@
     var productGroup = document.querySelector('#product-radio-wrapper');
     var tableDiv = document.querySelector('#table-wrapper');
     var sourceData1 = [];
+    var stateObj = { foo: "bar" };
+    //history.pushState(stateObj, "page 2", "bar.html");
     //console.log(2/3);
     //sourceData1 = sourceData;
     //getTableContent();
     //以下为localStorage
     window.onload = function () {
+        //console.log(location.hash);
         //localStorage.clear();
         if(localStorage.getItem('sourceData')) {
             //populateStorage();
@@ -76,6 +82,7 @@
             sourceData1 = sourceData;
         }
         getAllLine();
+
     };
 
     function populateStorage() {
@@ -213,9 +220,38 @@
         return data;
     }
 
+    // 为checkbox添加时间，根据选择项设置location hash
+    function setLoactionHashAccordingToCheckbox() {
+        var selectedRegionItems = getSelectData(regionGroup),
+            selectedProductItems = getSelectData(productGroup),
+            hash = location.hash || "region=&product=",
+            regionHash = "region=",
+            productHash = "product=";
 
-
-
+        if (selectedRegionItems.length === 0 || selectedProductItems.length === 0) {
+            return ;
+        }
+        regionHash += selectedRegionItems.join("+");
+        productHash += selectedProductItems.join("+");
+        hash = hash.split("&");
+        if (regionHash.length !== 7) {
+            hash[0] = regionHash;
+        }
+        if (productHash.length !== 8) {
+            hash[1] = productHash;
+        }
+        /*location.hash = hash.join("&");
+        console.log(location.hash);
+        console.log(decodeURIComponent(location.hash));*/
+        //history.pushState({page:1},null,'?page1')
+        history.pushState(null, "", "#"+hash.join("&"));     //利用pushState，题目要求应该不是这样简单，捂脸...
+    }
+    document.querySelector("#radio-wrapper").addEventListener("change", setLoactionHashAccordingToCheckbox, false);
+    window.addEventListener('popstate', function(e) {
+        //var currentState = e.state;
+        console.log(e);
+        console.log(history.href);
+    });
 
 
 
@@ -319,7 +355,7 @@
 
     function getSelectData(checkBoxName) {
         var len = checkBoxName.childNodes.length;
-        var arr1 = new Array();
+        var arr1 = [];
         for (var i = 2; i < len; i++) {
             if (checkBoxName.childNodes[i].checked === true) {
                 arr1.push(checkBoxName. childNodes [i+1].textContent);//这里我用过innerText，死活不行，显示是undiffined。
