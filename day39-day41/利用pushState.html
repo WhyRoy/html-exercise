@@ -228,11 +228,13 @@
         var arr = selectedProductItems.concat(selectedRegionItems);
         history.pushState(null, null, "?="+arr.join("+"));
         console.log(decodeURIComponent(location.href));
+        //location的href 属性是一个可读可写的字符串，可设置或返回当前显示的文档的完整 URL。
     }
 
     function historyCh () {
         //获得查询字符串
         let query = decodeURIComponent(location.href).split('?=')[1];
+        //decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码。
         console.log(query);
         var arr =query.split('&');
         console.log(arr[0]);
