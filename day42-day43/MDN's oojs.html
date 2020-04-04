@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+<p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+</body>
+
+<script>
+    /*//使用构建函数的形式创建对象
+    function Person(name) {
+        this.name = name;
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        };
+    }
+    //这时，this的值不确定，具体指向谁，需要看是谁调用的
+    //调用构建函数创建新的实例的方法：
+    var person1 = new Person('Bob');
+    var person2 = new Person('Sarah');
+    //上述代码中，关键字 new 跟着一个含参函数，用于告知浏览器我们想要创建一个对象，非常类似函数调用，并把结果保存到变量中。
+    console.log(person1.name);
+    console.log(person1.greeting());*/
+    //人物的构造器，里面只有属性
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            'first': first,
+            'last': last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+
+    }
+    //所有的方法都定义在构造器的原型上
+    Person.prototype.bio = function() {
+        if (this.gender==='male'){
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests.join(' and ') + '.');
+        }
+        else {
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. She likes ' + this.interests.join(' and ') + '.');
+        }
+    };
+    Person.prototype.greeting = function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+    };
+    Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    };
+    /*Person.prototype.greeting = function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+    };*/
+    // 根据Person构造一个人物对象
+    //注意这里传入interests的是一个数组
+    var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+
+    console.log(person1.age);
+    console.log(person1.bio());
+
+    //根据人物，构造一个教师构造器
+    function Teacher(first, last, age, gender, interests, subject) {
+        Person.call(this, first, last, age, gender, interests);
+        //call的作用是改变person的作用域，此处作用在了teacher里面，因而此处的teacher就拥有了所有的人物类的属性
+        this.subject = subject;
+    }
+
+
+    //此时还差两个地方，一个是教师的原型和构造器引用（构造器引用就是那个constructor）
+    Teacher.prototype = Object.create(Person.prototype);
+    //这意味着Teacher.prototype现在会继承Person.prototype的所有属性和方法。
+    Teacher.prototype.constructor = Teacher;
+    //当您保存并刷新页面以后，输入Teacher.prototype.constructor就会得到Teacher()。
+
+    //为教师添加独特的greeting方法（重写），教师自己的方法位置很关键，不能是在还未设置Teacher.prototype之前。否则设置Teacher.prototype之后会丢失
+    Teacher.prototype.greeting = function() {
+        var prefix;
+
+        if(this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+            prefix = 'Mr.';
+        } else if(this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+            prefix = 'Mrs.';
+        } else {
+            prefix = 'Mx.';
+        }
+
+        //alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+        console.log('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+    };
+    var teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+    teacher1.greeting();
+
+    //新建一个学生类，属性通过构造器添加
+    function Student(first, last, age, gender, interests,grade) {
+        Person.call(this,first, last, age, gender, interests);
+        this.grade = grade;
+    }
+    //学生原型和构造器引用
+    Student.prototype = Object.create(Person.prototype);
+    Student.prototype.constructor = Student;
+
+    //学生自己的greeting
+    Student.prototype.greeting = function () {
+        /*var prefix;
+
+        if(this.gender.toLowerCase() === 'male' ||this.gender.toLowerCase() === 'm') {
+            prefix = 'Mr.';
+        } else if(this.gender.toLowerCase() === 'female' ||this.gender.toLowerCase() === 'f') {
+            prefix = 'Mrs.';
+        } else {
+            prefix = 'Mx.';
+        }*/
+
+        //alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+        console.log('Hi, I am '+ this.name.first + ' from '+ this.grade + '.');
+    };
+
+    //创建一个Student对象
+    var student1 = new Student('Dave', 'Griffiths', 17, 'male', ['football', 'cookery'], '高三');
+    student1.greeting();
+
+    //小狗的例子
+    //2.通过原型方式给对象添加方法
+    function Dog(name){
+        this.name=name;
+    }
+    Dog.prototype.shout=function(){
+        window.alert("小狗尖叫"+this.name);
+    };
+    var dog1=new Dog("aa");
+    var dog2=new Dog("bb");
+    alert(dog1.shout());
+    alert(dog2.shout());
+
+    if(dog1.shout==dog2.shout){
+        window.alert("相等");
+    }else{
+        window.alert("不相等");
+    }
+
+    //会输出“相等”
+</script>
+</html>
