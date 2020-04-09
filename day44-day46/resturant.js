@@ -1,3 +1,10 @@
+var menuAll = [
+    new Food('宫保鸡丁',5,15),
+    new Food('土豆排骨',5,15),
+    new Food('葱炒回锅肉',5,15),
+    new Food('菠萝咕咾肉',5,15),
+    new Food('锅包肉',5,15),
+];
 //餐厅类
 function Restaurant(obj) {
     this.cash = obj.cash;
@@ -45,14 +52,35 @@ Waiter.prototype.constructor = Waiter;
 
 //重写服务员的工作。food应该按Food的格式给，可以是数组
 Waiter.prototype.complateWork = function(food){
+    //console.log(food);
     if(food instanceof Array){
         for(var i =0;i< food.length;i++){
-            this.foodlist.push(food[i]);
+            this.foodlist.push(food[i].name);
+            this.informCooker(food);
         }
     }else{
-        console.log("Dinner is" + food.name + "来了!");
+        console.log(food + "来了!");
+        //var customer = Customer.getCustomerInstance;
+        //console.log(customer);
+        customer.eat(food);
     }
 };
+//通知厨师的函数
+Waiter.prototype.informCooker = function (food) {
+    var cooker = Cook.getCookerInstance("Tony", 10000);
+    console.log('服务员：顾客点了：'+ food[0].name);
+    cooker.complateWork(food);
+};
+//单例模式，一次只生成一个服务员
+Waiter.getWaiterInstance = (function (name,wage) {
+    var waiterInstance=null;
+    return function (name,wage) {
+        if (!waiterInstance){
+            waiterInstance = new Waiter(name,wage);
+        }
+        return waiterInstance;
+    }
+})();
 
 
 //厨师类
@@ -64,22 +92,55 @@ Cook.prototype.constructor = Cook;
 
 //重写厨师的工作
 Cook.prototype.complateWork = function (food) {
-  console.log('烹饪出 '+ food.name);
+  console.log('开始烹饪 '+ food[0].name);
+  this.informWaiter(food[0].name);
+};
+//通知服务员
+Cook.prototype.informWaiter =function (food) {
+    console.log('服务员 '+ food + '做好了，快来取');
+    var waiter = Waiter.getWaiterInstance('Roy',1000);
+    waiter.complateWork(food);
 };
 
+//单例模式，一次只生成一个厨师
+Cook.getCookerInstance = (function (name,wage) {
+    var cookerInstance=null;
+    return function (name,wage) {
+        if (!cookerInstance){
+            cookerInstance = new Cook(name,wage);
+        }
+        return cookerInstance;
+    }
+})();
 // 顾客类
 // 方法：点菜，吃
 function Customer(){
     this.foodlist =[];
 }
-Customer.prototype.order = function(food){
+Customer.prototype.order = function(){
+    var food = menuAll[Math.floor(Math.random() * (menuAll.length-1))];
     console.log("点了" + food.name +"消费了" + food.price + "元。");
-    this.foodlist.push(food.name);
+    this.foodlist.push(food);
+    var waiter = Waiter.getWaiterInstance('Roy','1000');
+    //console.log(waiter);
+    //console.log(this.foodlist);
+    waiter.complateWork(this.foodlist);
+
+
 };
 Customer.prototype.eat = function(food){
-    console.log("吃了" + food.name);
+    console.log("吃了" + food + '好吃，下次再来！');
 };
 
+/*Customer.getCustomerInstance = (function () {
+    var customerInstance = null;
+    return function () {
+        if (!customerInstance){
+            customerInstance = new Customer();
+        }
+        return customerInstance;
+    }
+})();*/
 // 菜品类
 // 属性：名字、烹饪成本、价格
 function Food(name,cost,price){
@@ -88,7 +149,22 @@ function Food(name,cost,price){
     this.price = price;
 }
 
+//var customer = Customer.getCustomerInstance;
+//var customer = new Customer();
+let CustomerList = [
+    new Customer(),
+    new Customer(),
+    new Customer()
+];
+for (let i = 0,len = CustomerList.length; i < len; i++) {
+    var customer = CustomerList[i];
+    customer.order();
+}
+//console.log(customer);
+
+/*
 //测试
+
 var ifeRestaurant = new Restaurant({
     cash: 1000000,
     seats: 20,
@@ -104,4 +180,13 @@ ifeRestaurant.hire(newCook);
 console.log(ifeRestaurant.staffs);
 
 ifeRestaurant.fire(newCook);
-console.log(ifeRestaurant.staffs);
+*/
+/*
+console.log(ifeRestaurant.staffs);*/
+/*
+let CustomerList = [
+    new Customer(),
+    new Customer(),
+    new Customer()
+];
+CustomerList.forEach( item =>item.order());*/
