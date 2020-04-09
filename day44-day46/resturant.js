@@ -118,7 +118,7 @@ function Customer(){
     this.foodlist =[];
 }
 Customer.prototype.order = function(){
-    var food = menuAll[Math.floor(Math.random() * (menuAll.length-1))];
+    var food = menuAll[Math.floor(Math.random() * (menuAll.length))];
     console.log("点了" + food.name +"消费了" + food.price + "元。");
     this.foodlist.push(food);
     var waiter = Waiter.getWaiterInstance('Roy','1000');
