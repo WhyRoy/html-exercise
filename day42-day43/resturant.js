@@ -70,10 +70,11 @@ Cook.prototype.complateWork = function (food) {
 // 顾客类
 // 方法：点菜，吃
 function Customer(){
-
+    this.foodlist =[];
 }
 Customer.prototype.order = function(food){
-    console.log("点了" + food.name +"消费了" + food.price + "元。")
+    console.log("点了" + food.name +"消费了" + food.price + "元。");
+    this.foodlist.push(food.name);
 };
 Customer.prototype.eat = function(food){
     console.log("吃了" + food.name);
