@@ -102,7 +102,7 @@ Cook.prototype.informWaiter =function (food) {
     waiter.complateWork(food);
 };
 
-//单例模式，一次只生成一个厨师
+//创建单例模式的方法，一次只生成一个厨师，可以调用，赋给一个var的名字： var cooker = Cooker.getCookerInstance
 Cook.getCookerInstance = (function (name,wage) {
     var cookerInstance=null;
     return function (name,wage) {
