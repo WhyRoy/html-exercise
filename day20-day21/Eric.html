@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
     <style type="text/css">
-        div{
-            width: 480px;
-            height: 480px;
-            margin: 0 auto;
-            background-image: url("erik_ce204002.jpg");
-            background-repeat: no-repeat;
-        }
+      div {
+        width: 480px;
+        height: 480px;
+        margin: 0 auto;
+        background-image: url("erik_ce204002.jpg");
+        background-repeat: no-repeat;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="eric"></div>
     <button id="btn">点击开始</button>
-<script>
-    window.onload = function () {
+    <script>
+      window.onload = function () {
         var eric = document.querySelector(".eric");
         var Y = 480;
         var btn = document.getElementById("btn");
         function erik() {
-            eric.style.backgroundPositionY = "-" + Y + "px";
-            if (Y >= 7680) {
-                Y = 480;
-            }
-            else {
-                Y += 480;
-            }
-            setTimeout(erik,40);
+          eric.style.backgroundPositionY = "-" + Y + "px";
+          if (Y >= 7680) {
+            Y = 480;
+          } else {
+            Y += 480;
+          }
+          setTimeout(erik, 40);
         }
         btn.onclick = erik;
-    }
-</script>
-</body>
+      };
+    </script>
+  </body>
 </html>
